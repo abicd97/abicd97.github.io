@@ -1,0 +1,33 @@
+<HTML>
+<head>
+<title>aimer</title>
+<script language="JavaScript">
+ function ziel()
+ {
+    if (!parent.started)
+    {
+      alert('Einfach dem Muster nach hier drauffahren...');
+    }
+    else 
+    {
+      parent.main.CheckForm();
+    }
+ }
+</script>
+</head>
+<body bgcolor=white>
+
+<table height=100%>
+<tr>
+<td valign=top>
+ <a href="javascript:alert('Wie beschrieben vorgehen!')" onMouseover="parent.started=false"><img src="/abicd/images/dummy.gif" width=25 height=25 border=0></a><br>
+ <a href="javascript:alert('Bitte die Maus von links den Pfeilen folgend hierher bewegen. Nicht klicken.')" onMouseover="ziel();">
+ <img src="/abicd/images/anims/aim/ziel.gif" width=25 border=0><br>
+ <img src="/abicd/images/anims/aim/ziel.gif" width=25 border=0><br>
+ <img src="/abicd/images/anims/aim/ziel.gif" width=25 border=0></a>
+ <br><a href="javascript:alert('Wie beschrieben vorgehen!')" onMouseover="parent.started=false"><img src="/abicd/images/dummy.gif" width=25 height=2 border=0></a><br>
+</td>
+</tr>
+</table>
+</body>
+</HTML>

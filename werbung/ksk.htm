@@ -1,0 +1,23 @@
+<HTML>
+<body text=black background="/werbung/ksk.gif" bgcolor=white>
+<center>
+<font face="Comic Sans MS, Arial">
+<h1>Hello again...</h1><p>
+<script language="JavaScript">
+ var s = location.href;
+ s = s.substring(0, s.lastIndexOf("ksk.htm")) + "ksk3.avi";
+ if (window.navigator.appName == "Microsoft Internet Explorer")
+ {
+  document.writeln("<img dynsrc=\""+s+"\" controls>");
+ }
+ else
+ {
+  document.writeln("<embed src=\""+s+"\" autostart=true width=320 height=240>");
+ }
+</script>
+<p>
+...bitte warten Sie, bis der Film geladen ist.<hr>
+<a href="werbung.htm">Zur Werbungs-&Uuml;bersicht</a>
+<center>
+</body>
+</HTML>

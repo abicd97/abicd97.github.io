@@ -1,0 +1,269 @@
+<HTML>
+<script language="JavaScript">
+  function mecker()
+  {
+   alert("Nicht klicken! Nur von oben AUF DIREKTEM WEGE nach unten!");
+  }
+   function MaxRes(x, y) 
+   {
+    parent.started=true;
+    if (x*10 > parent.parent.maxx) parent.parent.maxx = x*10; 
+    if (y*10 > parent.parent.maxy) parent.parent.maxy = y*10;
+   }
+   function ForceRes(x, y) 
+   {
+    parent.parent.maxx = x*10; 
+    parent.parent.maxy = y*10;
+   }
+
+function CheckForm()
+{   
+    if (top.frames[2].document.mydata.r_sound.checked)
+    {
+      parent.parent.soundcard = true;
+    }
+    else
+    {
+      parent.parent.soundcard = false; 
+    }
+
+    if (top.frames[2].document.mydata.xanim.checked)
+    {
+      parent.parent.animation = 1;
+    }
+    else
+    {
+      parent.parent.animation = 0; 
+    }
+
+
+    if (top.frames[2].document.mydata.teach_bg.checked)
+    {
+      parent.parent.teacher_bg = true;
+    }
+    else
+    {
+      parent.parent.teacher_bg = false; 
+    }
+   
+
+  with (parent.parent)
+  {
+    maxx=maxx+80;
+    if (maxx > (1280 * 0.84))    
+      iconsend = "128";
+    if (maxx > (1024 * 0.84))
+      iconsend = "024"; 
+    else
+    if (maxx > (800 * 0.84))
+      iconsend = "800"; 
+    else
+      iconsend = "640";
+    maxx = maxx * 0.95;
+    iconsdir = "icons"+iconsend;
+    ShowLeiste(0);
+  }
+}
+</script>
+
+<body bgcolor=white>
+
+<table height=100%>
+<tr>
+<td valign=top colspan=2>
+<Table width=1550 cellspacing=0 cellpadding=0 border=0><tr>
+<TD width=10><a href="javascript:ForceRes(1,0)"onmouseover="MaxRes(1,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(2,0)" onmouseover="MaxRes(2,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a href="javascript:ForceRes(3,0)" onmouseover="MaxRes(3,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(4,0)" onmouseover="MaxRes(4,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a href="javascript:ForceRes(5,0)" onmouseover="MaxRes(5,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(6,0)" onmouseover="MaxRes(6,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a href="javascript:ForceRes(7,0)" onmouseover="MaxRes(7,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(8,0)" onmouseover="MaxRes(8,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a href="javascript:ForceRes(9,0)" onmouseover="MaxRes(9,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(10,0)" onmouseover="MaxRes(10,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a href="javascript:ForceRes(11,0)" onmouseover="MaxRes(11,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(12,0)"
+onmouseover="MaxRes(12,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(13,0)" onmouseover="MaxRes(13,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(14,0)"
+onmouseover="MaxRes(14,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(15,0)" onmouseover="MaxRes(15,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(16,0)"
+onmouseover="MaxRes(16,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(17,0)" onmouseover="MaxRes(17,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(18,0)"
+onmouseover="MaxRes(18,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(19,0)" onmouseover="MaxRes(19,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(20,0)"
+onmouseover="MaxRes(20,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(21,0)" onmouseover="MaxRes(21,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(22,0)"
+onmouseover="MaxRes(22,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(23,0)" onmouseover="MaxRes(23,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(24,0)"
+onmouseover="MaxRes(24,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(25,0)" onmouseover="MaxRes(25,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(26,0)"
+onmouseover="MaxRes(26,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(27,0)" onmouseover="MaxRes(27,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(28,0)"
+onmouseover="MaxRes(28,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(29,0)" onmouseover="MaxRes(29,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(30,0)"
+onmouseover="MaxRes(30,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(31,0)" onmouseover="MaxRes(31,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(32,0)"
+onmouseover="MaxRes(32,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(33,0)" onmouseover="MaxRes(33,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(34,0)"
+onmouseover="MaxRes(34,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(35,0)" onmouseover="MaxRes(35,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(36,0)"
+onmouseover="MaxRes(36,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(37,0)" onmouseover="MaxRes(37,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(38,0)"
+onmouseover="MaxRes(38,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(39,0)" onmouseover="MaxRes(39,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(40,0)"
+onmouseover="MaxRes(40,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(41,0)" onmouseover="MaxRes(41,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(42,0)"
+onmouseover="MaxRes(42,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(43,0)" onmouseover="MaxRes(43,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(44,0)"
+onmouseover="MaxRes(44,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(45,0)" onmouseover="MaxRes(45,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(46,0)"
+onmouseover="MaxRes(46,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(47,0)" onmouseover="MaxRes(47,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(48,0)"
+onmouseover="MaxRes(48,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(49,0)" onmouseover="MaxRes(49,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(50,0)"
+onmouseover="MaxRes(50,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(51,0)" onmouseover="MaxRes(51,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(52,0)"
+onmouseover="MaxRes(52,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(53,0)" onmouseover="MaxRes(53,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(54,0)"
+onmouseover="MaxRes(54,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(55,0)" onmouseover="MaxRes(55,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(56,0)"
+onmouseover="MaxRes(56,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(57,0)" onmouseover="MaxRes(57,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(58,0)"
+onmouseover="MaxRes(58,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(59,0)" onmouseover="MaxRes(59,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(60,0)"
+onmouseover="MaxRes(60,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(61,0)" onmouseover="MaxRes(61,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(62,0)"
+onmouseover="MaxRes(62,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(63,0)" onmouseover="MaxRes(63,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(64,0)"
+onmouseover="MaxRes(64,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(65,0)"
+onmouseover="MaxRes(65,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(66,0)"
+onmouseover="MaxRes(66,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(67,0)"
+onmouseover="MaxRes(67,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(68,0)"
+onmouseover="MaxRes(68,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(69,0)"
+onmouseover="MaxRes(69,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(70,0)"
+onmouseover="MaxRes(70,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(71,0)"
+onmouseover="MaxRes(71,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(72,0)"
+onmouseover="MaxRes(72,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(73,0)"
+onmouseover="MaxRes(73,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(74,0)"
+onmouseover="MaxRes(74,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(75,0)"
+onmouseover="MaxRes(75,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(76,0)"
+onmouseover="MaxRes(76,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(77,0)"
+onmouseover="MaxRes(77,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(78,0)"
+onmouseover="MaxRes(78,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(79,0)"
+onmouseover="MaxRes(79,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(80,0)"
+onmouseover="MaxRes(80,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(81,0)"
+onmouseover="MaxRes(81,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(82,0)"
+onmouseover="MaxRes(82,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(83,0)"
+onmouseover="MaxRes(83,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(84,0)"
+onmouseover="MaxRes(84,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(85,0)"
+onmouseover="MaxRes(85,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(86,0)"
+onmouseover="MaxRes(86,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(87,0)"
+onmouseover="MaxRes(87,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(88,0)"
+onmouseover="MaxRes(88,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(89,0)"
+onmouseover="MaxRes(89,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(90,0)"
+onmouseover="MaxRes(90,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(91,0)"
+onmouseover="MaxRes(91,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(92,0)"
+onmouseover="MaxRes(92,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(93,0)"
+onmouseover="MaxRes(93,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(94,0)"
+onmouseover="MaxRes(94,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(95,0)"
+onmouseover="MaxRes(95,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(96,0)"
+onmouseover="MaxRes(96,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(97,0)"
+onmouseover="MaxRes(97,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(98,0)"
+onmouseover="MaxRes(98,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(99,0)"
+onmouseover="MaxRes(99,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(100,0)" onmouseover="MaxRes(100,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(101,0)" onmouseover="MaxRes(101,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(102,0)" onmouseover="MaxRes(102,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(103,0)" onmouseover="MaxRes(103,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(104,0)" onmouseover="MaxRes(104,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(105,0)"
+onmouseover="MaxRes(105,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(106,0)" onmouseover="MaxRes(106,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(107,0)"
+onmouseover="MaxRes(107,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(108,0)" onmouseover="MaxRes(108,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(109,0)"
+onmouseover="MaxRes(109,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(110,0)" onmouseover="MaxRes(110,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(111,0)"
+onmouseover="MaxRes(111,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(112,0)" onmouseover="MaxRes(112,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(113,0)"
+onmouseover="MaxRes(113,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(114,0)" onmouseover="MaxRes(114,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(115,0)"
+onmouseover="MaxRes(115,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(116,0)" onmouseover="MaxRes(116,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(117,0)"
+onmouseover="MaxRes(117,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(118,0)" onmouseover="MaxRes(118,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(119,0)"
+onmouseover="MaxRes(119,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(120,0)" onmouseover="MaxRes(120,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(121,0)"
+onmouseover="MaxRes(121,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(122,0)" onmouseover="MaxRes(122,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(123,0)"
+onmouseover="MaxRes(123,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(124,0)" onmouseover="MaxRes(124,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(125,0)"
+onmouseover="MaxRes(125,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(126,0)" onmouseover="MaxRes(126,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(127,0)"
+onmouseover="MaxRes(127,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(128,0)" onmouseover="MaxRes(128,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(129,0)"
+onmouseover="MaxRes(129,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(130,0)" onmouseover="MaxRes(130,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(131,0)"
+onmouseover="MaxRes(131,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(132,0)" onmouseover="MaxRes(132,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(133,0)"
+onmouseover="MaxRes(133,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(134,0)" onmouseover="MaxRes(134,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(135,0)"
+onmouseover="MaxRes(135,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(136,0)" onmouseover="MaxRes(136,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(137,0)"
+onmouseover="MaxRes(137,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(138,0)" onmouseover="MaxRes(138,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(139,0)"
+onmouseover="MaxRes(139,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(140,0)" onmouseover="MaxRes(140,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(141,0)"
+onmouseover="MaxRes(141,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(142,0)" onmouseover="MaxRes(142,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(143,0)"
+onmouseover="MaxRes(143,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(144,0)" onmouseover="MaxRes(144,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(145,0)"
+onmouseover="MaxRes(145,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(146,0)" onmouseover="MaxRes(146,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD
+width=10><a href="javascript:ForceRes(147,0)"
+onmouseover="MaxRes(147,0)"><img src="/abicd/images/check/wall.jpg"
+border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(148,0)" onmouseover="MaxRes(148,0)"><img
+src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a href="javascript:ForceRes(149,0)" onmouseover="MaxRes(149,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD><TD width=10><a
+href="javascript:ForceRes(150,0)" onmouseover="MaxRes(150,0)"><img src="/abicd/images/check/wall.jpg" border="0"></a></TD></TR></Table>
+<tr>
+<td width=400>
+  <font face="Verdana">
+  Damit Sie bei der Darstellung unserer Pages keine Probleme haben, m&uuml;ssen sie 
+  das obige Spiel mitmachen<p>
+  <a href="/readme.txt">Lesen Sie bitte auch die wichtigen Hinweise zur schnellen und problemlosen Darstellung.</a>
+  </font>
+</td>
+<td>
+</td>
+</tr>
+</table>
+
+</body>
+</HTML>

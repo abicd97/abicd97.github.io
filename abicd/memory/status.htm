@@ -1,0 +1,349 @@
+<html>
+<head>
+<script language="JavaScript">
+  
+  var game = new Array(36);
+  var firstpressed = 0;
+  var savex = 0;
+  var savey = 0; 
+  var saveoldx = 0;
+  var saveoldy = 0; 
+
+  var showwrong = 0;
+  var counter = 0;
+  var hits = 0;
+  var winner = 0;
+  var itsok = 0;
+  
+  var datum = new Date();
+  var mydata = new Array(36);
+  var random_counter = 2;
+  var ran_used = 36;
+
+function obj_data(picfile,dum1,dum2,dum3)
+{
+  this.picfile = picfile;
+  this.dum1 = dum1;
+  this.dum2 = dum2;
+  this.dum3 = dum3;
+}
+
+function InitMyData()
+{
+  mydata[1] = new obj_data("/teachers/heads.mem/huss.jpg",1,1,0);
+  mydata[2] = new obj_data("/teachers/heads.mem/chmielus.jpg",1,2,0);
+  mydata[3] = new obj_data("/teachers/heads.mem/helmus.jpg",1,3,0);
+  mydata[4] = new obj_data("/teachers/heads.mem/reil.jpg",1,4,0);
+  mydata[5] = new obj_data("/teachers/heads.mem/raichle.jpg",1,5,0);
+  mydata[6] = new obj_data("/teachers/heads.mem/ohr.jpg",1,6,0);
+
+  mydata[7] = new obj_data("/teachers/heads.mem/backes.jpg",2,1,0);
+  mydata[8] = new obj_data("/teachers/heads.mem/foerster.jpg",2,2,0);
+  mydata[9] = new obj_data("/teachers/heads.mem/fister.jpg",2,3,0);
+  mydata[10] = new obj_data("/teachers/heads.mem/brehm.jpg",2,4,0);
+  mydata[11] = new obj_data("/teachers/heads.mem/rumold.jpg",2,5,0);
+  mydata[12] = new obj_data("/teachers/heads.mem/eitel.jpg",2,6,0);
+
+  mydata[13] = new obj_data("/teachers/heads.mem/faber.jpg",3,1,0);
+  mydata[14] = new obj_data("/teachers/heads.mem/garming.jpg",3,2,0);
+  mydata[15] = new obj_data("/teachers/heads.mem/guth.jpg",3,3,0);
+  mydata[16] = new obj_data("/teachers/heads.mem/rimmels.jpg",3,4,0);
+  mydata[17] = new obj_data("/teachers/heads.mem/ruebger.jpg",3,5,0);
+  mydata[18] = new obj_data("/teachers/heads.mem/pohlspre.jpg",3,6,0);
+
+  mydata[19] = new obj_data("/teachers/heads.mem/raichle.jpg",4,1,0);
+  mydata[20] = new obj_data("/teachers/heads.mem/ohr.jpg",4,2,0);
+  mydata[21] = new obj_data("/teachers/heads.mem/reil.jpg",4,3,0);
+  mydata[22] = new obj_data("/teachers/heads.mem/foerster.jpg",4,4,0);
+  mydata[23] = new obj_data("/teachers/heads.mem/backes.jpg",4,5,0);
+  mydata[24] = new obj_data("/teachers/heads.mem/guth.jpg",4,6,0);
+
+  mydata[25] = new obj_data("/teachers/heads.mem/huss.jpg",5,1,0);
+  mydata[26] = new obj_data("/teachers/heads.mem/helmus.jpg",5,2,0);
+  mydata[27] = new obj_data("/teachers/heads.mem/eitel.jpg",5,3,0);
+  mydata[28] = new obj_data("/teachers/heads.mem/chmielus.jpg",5,4,0);
+  mydata[29] = new obj_data("/teachers/heads.mem/pohlspre.jpg",5,5,0);
+  mydata[30] = new obj_data("/teachers/heads.mem/fister.jpg",5,6,0);
+
+  mydata[31] = new obj_data("/teachers/heads.mem/rumold.jpg",6,1,0);
+  mydata[32] = new obj_data("/teachers/heads.mem/garming.jpg",6,2,0);
+  mydata[33] = new obj_data("/teachers/heads.mem/rimmels.jpg",6,3,0);
+  mydata[34] = new obj_data("/teachers/heads.mem/faber.jpg",6,4,0);
+  mydata[35] = new obj_data("/teachers/heads.mem/brehm.jpg",6,5,0);
+  mydata[36] = new obj_data("/teachers/heads.mem/ruebger.jpg",6,6,0);
+}
+
+function InitVars()
+{
+/*  alert("Initialisiere Variablen!!"); */
+  InitMyData();
+/*  alert("Initialisiere Karten!"); */
+  for (x = 1;x < 37;x++) game[x] = new card("",1,1,0);
+/*  alert("Initialisiere Spiel!"); */
+  InitGame();	
+}
+
+
+function random(max)
+{
+  random_counter = random_counter + random_counter;
+  datum = new Date();
+  myrandom = datum.getTime() * random_counter;
+  return(myrandom % max);  
+}
+
+function card(picfile, xpos, ypos, opened)
+{
+  this.picfile = picfile;
+  this.xpos = xpos;
+  this.ypos = ypos;
+  this.opened = opened;
+};
+
+function InitGame()
+{
+  for (x = 1;x < 37;x++)
+  {
+   myran = random(ran_used)+1;
+   var up_counter = 0;
+   while (mydata[myran+up_counter].dum3 == 1)
+   {
+     up_counter = up_counter + 1;   
+   }
+   myran = myran+up_counter;
+   if (ran_used == 0) alert("Fehler: ran_used < 0\nDieser Fehler beeinflusst das Verhalten des Spiels!\nBitte Starten Sie das Spiel neu!");
+   ran_used = ran_used - 1;
+/*   alert("Randomzahl "+x+" von 36 ("+myran+")") ; */
+   mydata[myran].dum3 = 1;
+   game[x].picfile = mydata[myran].picfile
+   game[x].opened = 0;
+  }  
+/*  alert("Fertig"); */
+};
+
+function MyUnLoad()
+{
+/*  if ((winner == 0) && (itsok == 0)) 
+    ale	rt("Loser!!!")
+  else 
+  {
+   if (itsok == 1) itsok = 0;
+  } */
+}
+
+function Check4Winner()
+{
+  winner = 1;
+  for (x = 1;x < 37;x++)
+  {
+    if (game[x].opened == 0) winner = 0;
+  }
+  if (winner == 1) alert("Herzlichen Gl&uuml;ckwunsch! Du hast es geschafft!!! :-)\nVersuche: "+counter);
+}
+
+function ResetGame()
+{
+ parent.location.href = "MEMORY.htm";
+}
+  
+
+
+function ShowGameFieldNav(where)
+{
+  with (where.document)
+  {  
+    if (showwrong == 1)
+    {
+      write("<head><meta http-equiv=\"refresh\" content=\"8; URL=field_nv.htm\"></head>");
+      itsok = 1;
+    }
+    /* background=\"/abicd/images/bgs/coni1.gif\" */
+    write("<body bgcolor=white><font face=\"Verdana, Arial, Helvetica\">");      
+    write("<table width=100%><tr><td bgcolor=#ff0066><font color=#00ff66><h1>Lehrer-Memory-Spiel</h1></font></td></tR></table><p>");
+
+    write("<center>");
+    if (showwrong ==1) write("<a href=\"field_nv.htm\">");
+    for (y = 0;y < 6;y++)
+    {
+      for (x = 0;x < 6;x++)
+      {
+        if (game[y*6+x+1].opened == 0)
+        {
+          if (showwrong == 0) write("<a href=\"javascript:parent.frames[0].CheckFieldNav("+x+","+y+");\">");
+          write("<img src=\"/abicd/images/bricks.jpg\" border=0 vspace=1% hspace=1% width=9%>");
+          if (showwrong == 0) write("</a>"); 
+        }
+        else
+          write("<img src=\""+game[y*6+x+1].picfile+"\" border=0 vspace=1% hspace=1% width=9%>");
+      }
+    }
+    if (showwrong ==1) write("</a>"); 
+    write("</center>");
+    write("<div align=right>");
+    write("<table width=100><tr>");
+    write("<td bgcolor=white>Treffer:</td>");
+    write("<td bgcolor=green align=right>"+hits+"</td></tr><tr>");
+    write("<td bgcolor=white>Z&uuml;ge: </td><td bgcolor=red align=right>");
+    write(counter+"</td></tr></table>");
+    write("</div>");
+    write("<center>");
+    write("<form><input type=button value=\"Neues Spiel\" onClick=\"parent.frames[0].ResetGame();\"></form>");
+    write("</body>");
+    if (showwrong == 1) 
+    { 
+       showwrong = 0;      
+       game[savex+6*savey+1].opened = 0;
+       game[saveoldx+6*saveoldy+1].opened = 0;
+    }
+  } 
+}
+
+function ShowGameFieldIE(where)
+{
+  with (where.document)
+  {  
+    if (showwrong == 1)
+    {
+      write("<head><meta http-equiv=\"refresh\" content=\"8; URL=field_ie.htm\"></head>");
+      itsok = 1;
+    }
+    /* background=\"/abicd/images/bgs/coni1.gif\" */
+    write("<body bgcolor=white><font face=\"Verdana, Arial, Helvetica\">");      
+    write("<table width=100%><tr><td bgcolor=#ff0066><font color=#00ff66><h1>Lehrer-Memory-Spiel</h1></font></td></tR></table><p>");
+    write("<center>");
+    if (showwrong ==1) write("<a href=\"field_ie.htm\">");
+    for (y = 0;y < 6;y++)
+    {
+      for (x = 0;x < 6;x++)
+      {
+        if (game[y*6+x+1].opened == 0)
+        {
+          if (showwrong == 0) write("<a href=\"javascript:parent.frames[0].CheckFieldIE("+x+","+y+");\">");
+          write("<img src=\"/abicd/images/bricks.jpg\" border=0 vspace=1% hspace=1% width=9%>");
+          if (showwrong == 0) write("</a>"); 
+        }
+        else
+          write("<img src=\""+game[y*6+x+1].picfile+"\" vspace=1% hspace=1% width=9% border=0>");
+      }
+    }
+    if (showwrong ==1) write("</a>"); 
+    write("</center>");
+    write("<div align=right>");
+    write("<table width=100><tr>");
+    write("<td bgcolor=white>Treffer:</td>");
+    write("<td bgcolor=green align=right>"+hits+"</td></tr><tr>");
+    write("<td bgcolor=white>Z&uuml;ge: </td><td bgcolor=red align=right>");
+    write(counter+"</td></tr></table>");
+    write("</div>");
+    write("<center>");
+    write("<form><input type=button value=\"Neues Spiel\" onClick=\"parent.frames[0].ResetGame();\"></form>");
+    write("</body>");
+    if (showwrong == 1) 
+    { 
+       showwrong = 0;      
+       game[savex+6*savey+1].opened = 0;
+       game[saveoldx+6*saveoldy+1].opened = 0;
+    }
+  } 
+}
+
+function CheckFieldNav(myx,myy)
+{
+  if (firstpressed == 0)
+  {
+    savex = myx;
+    savey = myy;
+    game[myy*6+myx+1].opened = 1; 
+    parent.frames[1].document.images[myy*6+myx].src = game[myy*6+myx+1].picfile;
+    firstpressed = 1;
+  }
+  else
+  {
+    counter = counter + 1;
+    if (game[myx+6*myy+1].picfile == game[savex+6*savey+1].picfile)      /* Wow! Er hat das richtige Teil gefunden!! */
+    {
+      game[myx+6*myy+1].opened = 1;
+      parent.frames[1].document.images[myy*6+myx].src = game[myy*6+myx+1].picfile;
+      hits = hits + 1;
+      Check4Winner();
+    }
+    else
+    { 
+      showwrong = 1;
+      game[myx+6*myy+1].opened = 1;
+      parent.frames[1].document.images[myy*6+myx].src = "/abicd/images/bricks.jpg";
+      saveoldx = myx;
+      saveoldy = myy;
+    } 
+    firstpressed = 0;
+  parent.gamefield.location = "field_nv.htm"; 
+  }
+}
+
+function CheckFieldIE(myx,myy)
+{
+  if (firstpressed == 0)
+  {
+    savex = myx;
+    savey = myy;
+    game[myy*6+myx+1].opened = 1; 
+    firstpressed = 1;
+  }
+  else
+  {
+    counter = counter + 1;
+    if (game[myx+6*myy+1].picfile == game[savex+6*savey+1].picfile)      /* Wow! Er hat das richtige Teil gefunden!! */
+    {
+      game[myx+6*myy+1].opened = 1;
+      hits = hits + 1;
+      Check4Winner();
+    }
+    else
+    { 
+      showwrong = 1;
+      game[myx+6*myy+1].opened = 1;
+      saveoldx = myx;
+      saveoldy = myy;
+    } 
+    firstpressed = 0;
+  }
+  parent.gamefield.location = "field_ie.htm"; 
+}
+
+function NewGame()
+{
+  ran_used = 36;
+
+  InitMyData();
+  InitGame();
+  ShowWrong = 0;
+  FirstPressed = 0;
+  Counter = 0; 
+  itsok = 1;
+  showwrong = 0;
+  counter = 0;
+  hits = 0;
+  winner = 0;
+  parent.gamefield.location = "field.htm";
+}
+   
+</script>
+</head>
+<body bgcolor=white onLoad="InitVars();">
+<!--
+<table width=100%>
+<tr>
+
+<td width=50%>
+<center>
+<a href="/abicd/memory/start.htm" target=gamefield><img src="/abicd/images/icons/memory.jpg" border=0></a>
+</center>
+</td>
+<td>
+<center>
+</center>
+</td>
+</tr>
+</table>-->
+</body>
+</html>

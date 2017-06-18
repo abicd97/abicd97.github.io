@@ -1,0 +1,359 @@
+<HTML>
+<HEAD>
+<TITLE>Mertz, Cathrin</TITLE>
+<script language="JavaScript">
+ var sol="";
+ var cheated=false;
+
+ function AddToSolution(nummer)
+ {
+  for (x = 0; x < nummer.length; x++)
+  {
+   if (nummer[x].checked) 
+   {
+    sol = sol + nummer[x].value;
+    break;
+   }
+  }
+ }
+ function FormSolution()
+ {
+  sol="";
+   AddToSolution(document.raetsel.n1);
+   AddToSolution(document.raetsel.n2);
+   AddToSolution(document.raetsel.n3);
+   AddToSolution(document.raetsel.n4);
+   AddToSolution(document.raetsel.n5);
+   AddToSolution(document.raetsel.n6);
+   AddToSolution(document.raetsel.n7);
+   AddToSolution(document.raetsel.n8);
+  if (sol == "CATHRINWELOVEYOU")
+  {
+   sol= "Cathrin we love you"
+   if (!cheated)
+     alert("Du bist ein.... Gewinner!")
+   else
+     alert("Looser! Aber jetzt wei&szlig;t auch DU die L&ouml;sung :-)")
+  }
+  document.raetsel.solution.value = sol;
+ }
+ function FindSolution(nummer, text)
+ {
+  for (x = 0; x < nummer.length; x++)
+  {
+   if (nummer[x].value == text) nummer[x].checked = true;
+  }
+ }
+ function Solve()
+ {
+   cheated=true;
+   FindSolution(document.raetsel.n1, "CA");
+   FindSolution(document.raetsel.n2, "TH");
+   FindSolution(document.raetsel.n3, "RI");
+   FindSolution(document.raetsel.n4, "NW");
+   FindSolution(document.raetsel.n5, "EL");
+   FindSolution(document.raetsel.n6, "OV");
+   FindSolution(document.raetsel.n7, "EY");
+   FindSolution(document.raetsel.n8, "OU");
+   FormSolution();
+ }
+
+ function tabletag(percentage)
+ {
+  document.writeln("<table width="+parseInt(parent.maxx * percentage)+">");
+ }
+</script>
+</head>
+
+<script language="JavaScript">
+ document.writeln(parent.ShowHeader("s", 34, 1, "E / K"));
+</script>
+<img src="duffy.gif" align=left width=15% hspace=10 vspace=10>
+<B><i>Wer kennt sie wirklich?</i></B></P><P>
+
+<form name="raetsel">
+
+<script language="JavaScript">
+ tabletag(0.80);
+</script>
+<tr>
+<td colspan=3><font face="Verdana">
+1) Wo wird Cathrin im n&auml;chsten Jahr zu finden sein?
+</font></td>
+</tr>
+<tr><td width=20></td><td><font face="Verdana">
+a) Ballerman 6
+</font></td><td align=right width=70><font face="Verdana">
+KU<input type=radio name="n1" value="KU" onClick="FormSolution();">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+b) Kebapmeile Heilbronn
+</font></td><td align=right width=70><font face="Verdana">
+TA<input type=radio name="n1" value="TA" onClick="FormSolution();">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+c) USA
+</font></td><td align=right width=70><font face="Verdana">
+CA<input type=radio name="n1" value="CA" onClick="FormSolution();">
+</font></td></tr>
+</table>
+<p>
+<br clear=all><img src="passfoto.jpg" align=right width=40% hspace=10 vspace=10>
+
+<script language="JavaScript">
+ tabletag(0.55);
+</script>
+<tr>
+<td colspan=3><font face="Verdana">
+2) Was ist Cathrins Lieblingstier?
+</font></td>
+</tr>
+<tr><td width=20></td><td><font face="Verdana">
+a) Frank Hirschmann
+</font></td><td align=right width=70><font face="Verdana">
+LB<input type=radio name="n2" value="LB" onClick="FormSolution();">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+b) Ta
+</font></td><td align=right width=70><font face="Verdana">
+TH<input type=radio name="n2" value="TH" onClick="FormSolution();">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+c) S&uuml;dbengalischer W&uuml;stengecko AS
+</font></td><td align=right width=70><font face="Verdana">
+AS<input type=radio name="n2" value="AS" onClick="FormSolution();">
+</font></td></tr>
+</table>
+
+<script language="JavaScript">
+ tabletag(0.55);
+</script>
+<tr>
+<td colspan=3><font face="Verdana">
+3) Wie stellt sich Cathrin ihre Zukunft vor?
+</font></td>
+</tr>
+<tr><td width=20></td><td><font face="Verdana">
+a) Als Bardame beim Ballermann 6
+</font></td><td align=right width=70><font face="Verdana">
+AR<input type=radio name="n3" value="AR" onClick="FormSolution();">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+b) Als Kebapverk&auml;uferin bei M&uuml;zlim’s
+</font></td><td align=right width=70><font face="Verdana">
+OL<input type=radio name="n3" onClick="FormSolution();" value="OL">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+c) Als Vorzeige - Girlie bei Solid Harmony
+</font></td><td align=right width=70><font face="Verdana">
+SI<input type=radio name="n3" onClick="FormSolution();" value="SI">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+d) Als Grafik - Design - Studentin
+</font></td><td align=right width=70><font face="Verdana">
+RI<input type=radio name="n3" onClick="FormSolution();" value="RI">
+</font></td></tr>
+</table>
+<p>
+<br clear=all><img src="Cathrin.jpg" align=left width=25% hspace=10 vspace=10>
+<script language="JavaScript">
+ tabletag(0.70);
+</script>
+<tr>
+<td colspan=3><font face="Verdana">
+4) Was ist Cathrins Lieblingshobby? 
+</font></td>
+</tr>
+<tr><td width=20></td><td><font face="Verdana">
+a) Marc die Uhrzeit durchsagen
+</font></td><td align=right width=70><font face="Verdana">
+CH<input type=radio name="n4" onClick="FormSolution();" value="CH">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+b) Ta mit dem L&ouml;ffel f&uuml;ttern
+</font></td><td align=right width=70><font face="Verdana">
+LA<input type=radio name="n4" onClick="FormSolution();" value="LA">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+c) Ins Caf&eacute; gehen
+</font></td><td align=right width=70><font face="Verdana">
+NW<input type=radio name="n4" onClick="FormSolution();" value="NW">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+d) Schozacher Bl&auml;ttle austragen
+</font></td><td align=right width=70><font face="Verdana">
+FN<input type=radio name="n4" onClick="FormSolution();" value="FN">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+e) Milch beim Bauer holen
+</font></td><td align=right width=70><font face="Verdana">
+CR<input type=radio name="n4" onClick="FormSolution();" value="CR">
+</font></td></tr>
+</table>
+
+<script language="JavaScript">
+ tabletag(0.70);
+</script>
+<tr>
+<td colspan=3><font face="Verdana">
+5) Wer ist Cathrins Lieblingsnebensitzer?
+</font></td>
+</tr>
+<tr><td width=20></td><td><font face="Verdana">
+a) Ed von Schleck
+</font></td><td align=right width=70><font face="Verdana">
+NA<input type=radio name="n5" onClick="FormSolution();" value="NA">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+b) Jasmin R&uuml;del
+</font></td><td align=right width=70><font face="Verdana">
+EL<input type=radio name="n5" onClick="FormSolution();" value="EL">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+c) Marc Hoffmann
+</font></td><td align=right width=70><font face="Verdana">
+EL<input type=radio name="n5" onClick="FormSolution();" value="EL">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+d) Roswitha Sch&auml;uffele
+</font></td><td align=right width=70><font face="Verdana">
+TO<input type=radio name="n5" onClick="FormSolution();" value="TO">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+e) Yvonne Stropek
+</font></td><td align=right width=70><font face="Verdana">
+EL<input type=radio name="n5" onClick="FormSolution();" value="EL">
+</font></td></tr>
+</table>
+
+<script language="JavaScript">
+ tabletag(0.70);
+</script>
+<tr>
+<td colspan=3><font face="Verdana">
+6) Was hat Cathrin mit Felix aus dem Leintalzoo gemeinsam?
+</font></td>
+</tr>
+<tr><td width=20></td><td><font face="Verdana">
+a) Die Geschlechtsorgane
+</font></td><td align=right width=70><font face="Verdana">
+TO<input type=radio name="n6" onClick="FormSolution();" value="TO">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+b) Das Paarungsritual
+</font></td><td align=right width=70><font face="Verdana">
+SO<input type=radio name="n6" onClick="FormSolution();" value="SO">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+c) Den Urtrieb
+</font></td><td align=right width=70><font face="Verdana">
+LI<input type=radio name="n6" onClick="FormSolution();" value="LI">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+d) Die H&auml;nde
+</font></td><td align=right width=70><font face="Verdana">
+OV<input type=radio name="n6" onClick="FormSolution();" value="OV">
+</font></td></tr>
+</table>
+
+<br clear=all>
+<script language="JavaScript">
+ tabletag(0.95);
+</script>
+<tr>
+<td colspan=3><font face="Verdana">
+7) Wer ist Cathrins Lieblingslehrer?
+</font></td>
+</tr>
+<tr><td width=20></td><td><font face="Verdana">
+a) Heinrich Vogt - Wachtler
+</font></td><td align=right width=70><font face="Verdana">
+LO<input type=radio name="n7" onClick="FormSolution();" value="LO">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+b) Dr. Specht
+</font></td><td align=right width=70><font face="Verdana">
+FE<input type=radio name="n7" onClick="FormSolution();" value="FE">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+c) Emanuelle
+</font></td><td align=right width=70><font face="Verdana">
+LA<input type=radio name="n7" onClick="FormSolution();" value="LA">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+d) Herr J&auml;ck
+</font></td><td align=right width=70><font face="Verdana">
+EY<input type=radio name="n7" onClick="FormSolution();" value="EY">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+e) Herr Rumold
+</font></td><td align=right width=70><font face="Verdana">
+ST<input type=radio name="n7" onClick="FormSolution();" value="ST">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+f) Frau Schirmeister
+</font></td><td align=right width=70><font face="Verdana">
+CK<input type=radio name="n7" onClick="FormSolution();" value="CK">
+</font></td></tr>
+</table>
+<p>
+<br clear=all><img src="Cathrin.jpg" align=right width=30% hspace=10 vspace=10>
+<script language="JavaScript">
+ tabletag(0.65);
+</script>
+
+<tr>
+<td colspan=3><font face="Verdana">
+8) Wer ist Cathrins Lieblingsstar?
+</font></td>
+</tr>
+<tr><td width=20></td><td><font face="Verdana">
+a) Polo Rubens
+</font></td><td align=right width=70><font face="Verdana">
+PU<input type=radio name="n8" onClick="FormSolution();" value="PU">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+b) Bugs Bunny
+</font></td><td align=right width=70><font face="Verdana">
+ST<input type=radio name="n8" onClick="FormSolution();" value="ST">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+c) Helmut Fischer
+</font></td><td align=right width=70><font face="Verdana">
+OU<input type=radio name="n8" onClick="FormSolution();" value="OU">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+d) Prinzessin Erdbeer
+</font></td><td align=right width=70><font face="Verdana">
+CH<input type=radio name="n8" onClick="FormSolution();" value="CH">
+</font></td></tr>
+<tr><td width=20></td><td><font face="Verdana">
+e) Emanuelle
+</font></td><td align=right width=70><font face="Verdana">
+TO<input type=radio name="n8" onClick="FormSolution();" value="TO">
+</font></td></tr>
+</table>
+<p>&nbsp;<p><b>Die L&ouml;sung:</b><p>
+<input type=text name="solution" value="Die Kreise anklicken!" length=20">
+<input type=button name="loesen" value="Jetzt L&ouml;sen..." onClick="Solve();">
+</form>
+<p><hr><p>
+<p>
+Habt ihr dieses Quiz erfolgreich gel&ouml;st, dann wisst ihr: WE LOVE HER!<br>
+und wenn ihr jetzt denkt, ihr kennt sie wirklich, SOYEZ PRUDENT!<br>
+Denn unsere Cathrin ist vieles, und trotzdem ist sie oft mehr als ihr denkt.
+<p>
+<p><br clear=all>
+<IMG SRC="Image1.jpg" width=20% align=left>
+<a href="javascript:parent.SearchPupil('Stropek Yvonne');">Yvonne</a>,
+<a href="javascript:parent.SearchPupil('Hoffmann Marc');">Marc</a>,
+<a href="javascript:parent.SearchPupil('Schneider Petra');">Petra</a>,
+<a href="javascript:parent.SearchPupil('R&uuml;del Jasmin');">Jasmin</a>,
+<a href="javascript:parent.SearchPupil('Eisele Dominik');">Dominik</a>
+
+<br clear=all>
+<script language="JavaScript">
+ document.writeln(parent.footer);
+</script>
+
+</HTML>

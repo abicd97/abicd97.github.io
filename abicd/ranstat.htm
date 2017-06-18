@@ -1,0 +1,25 @@
+<HTML>
+<body bgcolor=white>
+<h1>Zufallsgenerator</h1>
+<p>
+<table>
+<tR>
+<th>Filename</th><th>Random-Calls</th></tr>
+<script language="JavaScript">
+  for (x = 1;x < 32; x++)
+  {
+    with (document)
+    {
+      write("<tr><Td>");
+      write(parent.RanBGS[x].bgfile);
+      write("</td><td align=right>");
+      write(parent.RanBGS[x].counter);
+      write("</td></tr>");
+    }
+  }
+</script>
+</table>
+</body>
+</HTML>
+
+ 

@@ -1,0 +1,149 @@
+<HTML>
+<HEAD>
+<TITLE>Schmidt, Marcus</TITLE>
+<script language="JavaScript">
+ 
+ function Auswerten()
+ {
+  var punkte=0;
+  with (document)
+   for (x = 0; x < 30; x++)
+    if (marci.elements[x].checked) punkte = punkte + parseInt(marci.elements[x].value);
+  
+ var text="Du hast "+punkte+" Punkte erreicht.\nErgebnis:\n";
+ if (punkte <= 0) text = text + "Du bist das krasse Gegenteil eines Marci, was hei&szlig;t, da&szlig; du ein Riesenarschloch bist.";
+ else
+ if (punkte <= 99) text = text + "Du bist kein Marci, kannst aber noch einer werden. Gib also dein Bestes.";
+ else
+ if (punkte == 100) text = text + "Du bist ein Marci! Deshalb wird es da wo du bist nie langweilig. Geh aber trotzdem mal zum Psychiater.";
+ else text = text + "Du bist pervers. Bewirb dich bei Theresa Orlowski.";
+ alert(text);
+ } 
+ 
+</script>
+</head>
+
+<script language="JavaScript">
+ document.writeln(parent.ShowHeader("s", 45, 2, "E / S"));
+</script>
+
+<form name="marci">
+<u><h1>Fragebogen: Bist du ein Marci?</u>
+<p>
+<p></H1>
+
+<table width="100%" border=0 cellpadding=4 >
+<tr>
+<td valign="top">	
+<b>1. Wie verhalte ich mich vor einer Klassenarbeit?</b><br>
+
+<ul>
+<li>Ich versuche, mich so gut wie m&ouml;glich zu konzentrieren       <b>0<input type=radio name=1 value="0">Pkte.</b>
+<li>	Ich gehe zu jedem meiner Freunde und sage ihm mind. 12mal alles vor, was ich f&uuml;r die Klassenarbeit zu Hause auswendig gelernt habe. Ich rede auch dann weiter, wenn meine Freunde schon l&auml;ngst abgehauen sind.     <b>10<input type=radio name=1 value="10">Pkte.</b>
+<li>	Ich setze mein h&auml;&szlig;lichstes Gesicht auf und &uuml;berlege mir einen dummen Spruch.  <b>    5<input type=radio name=1 value="5">Pkte.</b>
+</ul>
+<p>
+
+
+<center><img src="marcschm.jpg"></center>
+<b>2. Mein Lieblingsspiel ist: </b>
+
+<li>	Mensch-&auml;rgere-dich-nicht     <b>-10<input type=radio name=2 value="-10">Pkte. </b>
+<li>	Ringelpitz mit anfassen     <b>0<input type=radio name=2 value="0">Pkte. </b>
+<li>	Wortkette, denn dabei bem&uuml;he ich mich, m&ouml;glichst dummliche und schwachsinnige W&ouml;rter zu erfinden (z.B. Nahkampfbazille oder Tierdarmverdauer)     <b>10<input type=radio name=2 value="10">Pkte. </b>
+<p>
+
+<b>3. Wie reagiere ich, wenn ich ein Kuscheltier sehe?</b>
+<ul>
+<li>	Ich ignoriere es, weil ich schon zu alt daf&uuml;r bin.     <b>0<input type=radio name=3 value="0">Pkte.</b>
+<li> Ich rei&szlig;e es sofort an mich und gebe es nicht mehr her. Dabei stelle ich allerlei Szenen nach. Meine Augen leuchten dabei wie Sterne.     <b>10<input type=radio name=3 value="10">Pkte.</b>
+<li>Ich setze mein h&auml;&szlig;lichstes Gesicht auf und &uuml;berlege mir einen dummen Spruch.    <b> 5<input type=radio name=3 value="5">Pkte.</b>
+</uL>
+<p>
+<b>4. Was sind meine Wohlf&uuml;hlklamotten? </b>
+<ul>
+<li>	Toga     <b>0<input type=radio name=2 value="0">Pkte.</b>
+<li>	B&ouml;hmische Volkstracht       <b>-5<input type=radio name=4 value="-5">Pkte.</b>
+<li>	Jogginghose und oben ohne       <b>10<input type=radio name=4 value="10">Pkte.</b>
+</ul>
+
+<b>5. Welches sind meine Vorbilder? </b>
+
+<ul>
+<li>	Rita S&uuml;&szlig;muth       <b>-5<input type=radio name=5 value="-5">Pkte.</b>
+<li>	Ren   Stimpy       <b>10<input type=radio name=5 value="10">Pkte.</b>
+<li>	Mutter Theresa       <b>0<input type=radio name=5 value="0">Pkte.</b>
+</ul>
+<b>6. Was m&ouml;chte ich werden?</b>
+<ul>
+<li>	ein cooler Breaker (ach nein, da&szlig; bin ich ja schon)     <b>10<input type=radio name=6 value="10">Pkte.</b>
+<li>	ein Huhn, dann w&uuml;rde ich jeden Tag ein Ei legen, bis auf Sonntag, da auch zwei       <b>5<input type=radio name=6 value="5">Pkte.</b>
+<li>	Titten       <b>150<input type=radio name=6 value="150">Pkte.</b>
+</ul>
+<p>
+</td>
+<td valign="top">
+
+
+<b>7. Auf was achte ich bei meiner t&auml;glichen K&ouml;rperpflege am meisten?</b>
+<center><img src="marci_.gif" align="right"></center>
+<ul>
+<li>	Meine Haare m&uuml;ssen so geschmeidig sein, da&szlig; mich jeder darum beneidet. Daf&uuml;r f&ouml;ne ich sie auch stundenlang. Haarwurzelkatarrh ist mein schlimmster Alptraum.     <b>10<input type=radio name=7 value="10">Pkte.</b>
+<li>	Meine Haut mu&szlig; weich wie ein Babypopo sein.     <b>5<input type=radio name=7 value="5">Pkte.</b>
+<li>	fette Titten       <b>150<input type=radio name=7 value="150">Pkte.</b>
+</ul>
+<p>
+<b>8. Was tue ich, wenn ein Freund mich um Rat fragt? </b>
+
+<li>	Ich antworte ihm so gut wie m&ouml;glich.    <b> 0<input type=radio name=8 value="0">Pkte.</b>
+<li>Ich grinse ihn an, renne einmal im Kreis herum, nehme dabei mein rechtes Bein unter den Arm und rufe dreimal laut: "Butter!"     <b>10<input type=radio name=8 value="10">Pkte.</b>
+<li>	Ich erz&auml;hle ihm, was f&uuml;r ein tolles Tor ich gestern im Sportunterricht geschossen habe, stelle es m&ouml;glichst genau nach und wundere mich danach, warum mein Freund nicht mehr da ist.     <b>5<input type=radio name=8 value="5">Pkte.</b>
+</ul>
+<p>
+<b>9. Was mache ich in langweiligen Unterrichtsstunden?</b>
+<ul>
+<li>	Es gibt keine langweiligen Unterrichtsstunden!     <b>-10<input type=radio name=9 value="-10">Pkte.</b>
+<li>	Ich schreibe hirnrissige Briefe an meine Nebensitzer.     <B>5<input type=radio name=9 value="5">Pkte.</b>
+<li>	Ich erz&auml;hle Witze, die ich selbst noch nicht kenne und lache selbst am meisten dar&uuml;ber.     <b>10<input type=radio name=9 value="10">Pkte.</b>
+</ul>
+<p>
+<b>10. Was mache ich, wenn jemand das Wort "Goon" erw&auml;hnt? </b>
+
+<ul>
+<li>	Ich fange an, diese Comicfigur nachzuahmen.
+<b>5<input type=radio name=10 value="5">Pkte.</b>
+<li>	Ich werfe mich zu Boden und lache minutenlang.
+<b>10<input type=radio name=10 value="10">Pkte.</b>
+<li>	Ich fange an, &uuml;ber die Theodizefrage nachzudenken.
+<b>–5<input type=radio name=10 value="5">Pkte.</b>
+</ul>
+</TD>
+</TR>
+<p>
+</table>
+
+<hr noshade width="80%">
+<b>Auswertung: </b><input type=button value="Computer auswerten lassen..." onClick=Auswerten();>
+<font face="Comic Sans MS">
+<ol>
+<li>  &lt;&nbsp;0&nbsp;Pkte.:     Du bist das krasse Gegenteil eines Marci, was hei&szlig;t, da&szlig; du ein Riesenarschloch bist.
+<li>0&nbsp;- &nbsp;99&nbsp;Pkte.: Du bist kein Marci, kannst aber noch einer werden. Gib also dein Bestes.
+<li>100&nbsp;Pkte.:    Du bist ein Marci! Deshalb wird es da wo du bist nie langweilig. Geh aber trotzdem mal zum
+Psychiater.
+<li> &gt;&nbsp;100&nbsp;Pkte.: Du bist pervers. Bewirb dich bei Theresa Orlowski.
+</ol>
+</form>
+<p>
+
+<a href="javascript:parent.SearchPupil('Muth Philipp');">Philipp</A>,
+<a href="javascript:parent.SearchPupil('Spr&ouml;hnle Tobias');">Tobias S.</a>,
+<a href="javascript:parent.SearchPupil('Mogler Tobias');">Tobias M.</a>,
+<a href="javascript:parent.SearchPupil('Weber Andreas');">Andi W.</a>
+
+<br clear=all>
+<script language="JavaScript">
+ document.writeln(parent.footer);
+</script>
+
+</HTML>
+

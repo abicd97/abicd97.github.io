@@ -1,0 +1,274 @@
+<html>
+<head>
+<title>G&auml;rtner, Bianca</title>
+<script language="JavaScript">
+ var solution="";
+ var cheated=false;
+ var fertig=false;
+ function AddToSol(element, position)
+ {
+  if (element.value.length >= position) solution = solution + element.value.charAt(position-1);
+				else	solution = solution + ".";			
+ }
+
+ function CheckIt()
+ {
+  solution="";
+  for (x = 1; x < 51; x++) document.forms[0].elements[x].checked = true;
+  with (document.forms[0])
+  {
+   AddToSol(tvserie, 1);
+   AddToSol(haarfarbe, 8);
+   AddToSol(sport, 11);
+   if (tvserie.value.indexOf(" ", 2)) AddToSol(tvserie, 11);
+			else		  AddToSol(tvserie, 10);	
+   AddToSol(sein, 1);
+   AddToSol(sport, 3);
+   AddToSol(urlaub, 2);
+   AddToSol(muttersprache, 2);
+   AddToSol(beruf, 1);
+   if (comic.value.indexOf(" ", 2)) AddToSol(comic, 7);
+			else		AddToSol(comic, 6);	
+   AddToSol(urlaub, 7);
+   AddToSol(fahren, 7);
+   AddToSol(pflanze, 7);
+   AddToSol(pflanze, 8);
+   AddToSol(gesicht, 5);
+   AddToSol(figuren, 15);
+   AddToSol(essen, 5);
+   AddToSol(fahren, 1);
+   AddToSol(qualm, 2);
+   AddToSol(qualm, 5);
+   if (solution.toLowerCase() == "vielgl&uuml;ckundbleibfit")
+   {
+    loesung.value = "VielGl&uuml;ckUndBleibFit";
+    if (cheated) alert("Aber so kann das ja jeder... CHEATER!");
+           else  {  
+ 		   fertig=true;		
+                   alert("Geschafft! Super! Gute Leistung!");
+                 }
+   }
+   else
+   {
+     loesung.value = solution.toLowerCase();
+     alert("Du bist noch nicht ganz fertig... Bis jetzt lautet Deine L&ouml;sung: "+solution);
+   }
+  }
+  /*var result="";
+  for (x = 1; x < 51; x++) result = result + document.forms[0].elements[x].value + "=" + document.forms[0].elements[x].checked + "  ";
+  alert(result);*/
+ }
+ function SolveIt()
+ {
+  if (fertig) alert("Du hast es doch schon gel&ouml;st! Gratulation nochmal!")
+  else
+  if (confirm("Wirklich? So schwer ist es doch echt nicht!"))
+  {
+   cheated = true;
+   with (document.forms[0])
+   {
+    haarfarbe.value = "rothaarig";
+    muttersprache.value = "schw&auml;bisch";
+    essen.value = "Salzbrezeln";
+    tvserie.value = "Verbotene Liebe";
+    comic.value = "Die Maus";
+    sport.value = "Rollerskates";
+    urlaub.value = "S&uuml;dfrankreich";
+    gesicht.value = "Sommersprossen";
+    figuren.value = "&Uuml;berraschungsei";
+    fahren.value = "Fahrrad";
+    sein.value = "Girlie";
+    pflanze.value = "Sonnenblume";
+    beruf.value = "keine Ahnung";
+    qualm.value = "Nichtraucher";
+    CheckIt();   
+   }
+  }
+ }
+</script>
+</head>
+
+<script language="JavaScript">
+ document.writeln(parent.ShowHeader("s", 15, 2, "E / K"));
+</script>
+<CENTER>
+<a href="#raetsel"><img src="bibiraet.jpg" align=right width=30% hspace=10 vspace=10 border=0></a>
+<B><FONT SIZE=+1>KLEIN,FEIN,BIBI UND OHO!</FONT></B></CENTER>
+<p>DER ALLTAG EINER GESTRESSTEN SCH&Uuml;LERIN.<p>
+<br clear=all>
+<img src="maulwur_.jpg" align=right hsapce=10 vspace=10 width=25%>
+<P>Mit schnellen Pedaltritten n&auml;hert sich Bibi jeden Tag dem grauen
+Schulklotz, der sich JKG nennt. Obwohl sie eigentlich immer p&uuml;nktlich
+aufsteht, f&auml;llt es ihr anscheinend schwer, am Morgen ihre h&auml;usliche
+Umgebung zu verlassen - denn sie kommt immer erst kurz vor knapp angesaust.
+Nach dem zweiten Gong schleppt sie sich dann mit M&uuml;he und nach rasanter
+Fahrt ins Klassenzimmer. Dadurch, da&szlig; Lehrer nun mal auch nicht die
+p&uuml;nktlichsten Menschen sind, kommt sie kaum mal zu sp&auml;t zum Unterricht.
+<img src="kleinbib.jpg" align=left hsapce=10 vspace=10 width=50%>
+Weil da nicht mehr viel Zeit f&uuml;r ein Gespr&auml;ch bleibt, unterh&auml;lt
+man sich einfach w&auml;hrend des Unterrichts weiter, was dann durch die
+strafenden Blicke der Lehrer beendet wird. Das gro&szlig;e Unverst&auml;ndnis
+in Mathe bleibt selbst nach aufopferungsvollen Nachhilfestunden noch bestehen,
+und wir fragten uns, ob &uuml;berhaupt noch Hoffnung best&uuml;nde, im
+Matheabi ein paar P&uuml;nktchen zu erhaschen. Doch die guten Zensuren
+in anderen F&auml;chern, wie ihre Super-13-Punkte in der Deutschpr&uuml;fung,
+gleichen diesen Frust wieder etwas aus.</P>
+
+<P>Seit geraumer Zeit ist Bianca auf vier R&auml;dern unterwegs, n&auml;mlich
+mit ihrem tarngr&uuml;nen Fiat Uno - einem Erbst&uuml;ck von ihrer Schwester.
+Nach anf&auml;nglichen Schwierigkeiten mit dem Choke, der in diesem Modell
+noch vorhanden ist, kommt sie im Moment ganz gut damit zurecht. Mit ihrem
+neuen Gef&auml;hrt ist sie vor allem zum V&ouml; unterwegs, wo sie am Wochenende,
+und auch an manch anderen Tagen, je nach Bedarf, an der Bar arbeitet.</P>
+<img src="schlumpf.gif" align=right hspace=10 vspace=10 width=20%>
+<P>Bibi erz&auml;hlt gerne, viel und sehr ausf&uuml;hrlich. Sie kann stundenlang
+&uuml;ber irgend etwas reden. Dies schlie&szlig;t aber nicht aus, da&szlig;
+sie auch zuh&ouml;ren kann, wenn man mit eigenen Problemchen auf sie zukommt.
+FAZIT:- KLEIN,FEIN,BIBI UND OHO!</P>
+
+<DIV ALIGN=right><a href="javascript:parent.SearchPupil('Freymaier Beatrice');"><B>Bea</B></A></DIV>
+<br clear=all>
+<p>
+<a name="raetsel">
+<img src="maus_.jpg" align=left vspace=10 hspace=10 width=20%>
+<center>
+<P><B><FONT SIZE=+1>Bibir&auml;tsel 97:</FONT></B></P>
+Dieses Silbenr&auml;tsel ist INTERAKTIV l&ouml;sbar:<br>
+Einfach die L&ouml;sungsworte in die Formularfelder einsetzen, rechts die
+verbrauchten Silben zur Orientierung abw&auml;hlen und am Schlu&szlig; ganz unten
+auf "Fertig!?" klicken...<br>
+</center>
+</a>
+
+<br clear=all>
+<font face="Arial">
+<form name="bibiraetsel">
+<TABLE BORDER=1 WIDTH="100%">
+<TR>
+<TD>Haarfarbe:</td>
+<td><input type=text name="haarfarbe" length=9 maxlength=9 value="">
+ <nobr>_ _ _ _ _ _ _ |2| _</nobr></td>
+<td rowspan=14 width=22%>
+ <nobr><input type=checkbox name="s01" checked value="Ah">Ah&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s02" checked value="be">be&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s03" checked value="bre">bre&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s04" checked value="bre">bre&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s05" checked value="bisch">bisch&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s06" checked value="blu">blu&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s07" checked value="bo">bo&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s08" checked value="cher">cher&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s09" checked value="die">die&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s10" checked value="ei">ei&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s11" checked value="er">er&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s12" checked value="fahr">fahr&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s13" checked value="frank">frank&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s14" checked value="Gir">Gir&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s15" checked value="haa">haa&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s16" checked value="In">In&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s17" checked value="kei">kei&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s18" checked value="lie">lie&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s19" checked value="lie">lie&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s20" checked value="line">line&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s21" checked value="Maus">Maus&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s22" checked value="men">men&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s23" checked value="mer">mer&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s24" checked value="ne">ne&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s25" checked value="ne">ne&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s26" checked value="nen">nen&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s27" checked value="nicht">Nicht&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s28" checked value="nung">nung&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s29" checked value="ra">ra&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s30" checked value="rad">rad&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s31" checked value="rau">rau&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s32" checked value="reich">reich&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s33" checked value="rig">rig&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s34" checked value="rot">rot&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s35" checked value="Salz">Salz&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s36" checked value="schw&auml;">schw&auml;&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s37" checked value="schungs">schungs&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s38" checked value="Son">Son&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s39" checked value="Som">Som&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s40" checked value="sen">sen&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s41" checked value="spros">spros&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s42" checked value="S&uuml;d">S&uuml;d&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s43" checked value="ska">ska&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s44" checked value="te">te&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s45" checked value="tes">tes&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s46" checked value="&Uuml;">&Uuml;&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s47" checked value="va">va&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s48" checked value="vo">vo&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s49" checked value="vi">vi&nbsp;-</nobr> 
+ <nobr><input type=checkbox name="s50" checked value="zeln">zeln</nobr></td>
+</tr>
+<tr><td>Muttersprache:</td>
+<td><input type=text name="muttersprache" length=10 maxlength=10 value="">
+ <nobr>_ |8| _ _ _ _ _ _ _ _</nobr></td>
+</tr>
+<tr>
+<td>i&szlig;t sie gerne, nicht s&uuml;&szlig;:</td>
+<td><input type=text name="essen" length=11 maxlength=11 value="">
+ <nobr>_ _ _ _ |17| _ _ _ _ _ _</nobr></td>
+</tr>
+<tr>
+<td>darf sie nicht verpassen (TV-Serie):</td>
+<td><input type=text name="tvserie" length=15 maxlength=15 value="">
+ <nobr>|1| _ _ _ _ _ _ _ _&nbsp;&nbsp;&nbsp;|4| _ _ _ _</nobr></td>
+</tr>
+<tr><td>Lieblingscomicfigur:</td>
+<td><input type=text name="comic" length=8 maxlength=8 value="">
+ <nobr>_ _ _ &nbsp;&nbsp;&nbsp;_ _ |10| _</nobr></td></tr>
+<tr><td>sportliches Hobby:
+<td><input type=text name="sport" length=12 maxlength=12 value="">
+ <nobr>_ _ |6| _ _ _ _ _ _ _ |3| _</nobr></td></tr>
+<tr><td>h&auml;ufigstes Urlaubsziel:</td>
+<td><input type=text name="urlaub" length=13 maxlength=13 value="">
+ <nobr>_ |7| _ _ _ _ |11| _ _ _ _ _ _</nobr></td></tr>
+<tr><td>hat sie im Gesicht:</td>
+<td><input type=text name="gesicht" length=14 maxlength=14 value="">
+ <nobr>_ _ _ _ |15| _ _ _ _ _ _ _ _ _</nobr></td></tr>
+<tr><td>sammelt die Figuren daraus:
+<td><input type=text name="figuren" length=15 maxlength=15 value="">
+ <nobr>_ _ _ _ _ _ _ _ _ _ _ _ _ _ |16|</nobr></td></tr>
+<tr><td>f&auml;hrt damit zur Schule:</td>
+<td><input type=text name="fahren" length=7 maxlength=7 value="">
+ <nobr>|18| _ _ _ _ _ |12|</nobr></td></tr>
+<tr><td>k&ouml;nnte ein ... sein:</td>
+<td><input type=text name="sein" length=6 maxlength=6 value="">
+ <nobr>|5| _ _ _ _ _</nobr></td></tr>
+<tr><td>Lieblingspflanze:</td>
+<td><input type=text name="pflanze" length=11 maxlength=11 value="">
+ <nobr>_ _ _ _ _ _ |13|&nbsp;|14| _ _ _</nobr></td></tr>
+<tr><td>Berufsziel:</td>
+<td><input type=text name="beruf" length=12 maxlength=12 value="">
+ <nobr>|9| _ _ _ _&nbsp;&nbsp;&nbsp;_ _ _ _ _ _</nobr></td></tr>
+<tr><td>Einstellung zu Qualm:</td>
+<td><input type=text name="qualm" length=12 maxlength=12 value="">
+ <nobr>_ |19| _ _ |20| _ _ _ _ _ _ _</nobr></td></tr>
+</TABLE>
+</font face="Arial">
+<img src="bibisitz.jpg" align=left hspace=10 vspace=10 width=45%>
+<center><p>
+<B>L&ouml;sung:</B> <input type=text name="loesung" length=20 maxlength=20 value="...................."><br>
+<font size=-2>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ &nbsp;&nbsp;(1-20)</font><p>
+<input type=reset value="Nochmal von vorne..." onClick="fertig=false"><br>
+<input type=button value="Fertig!?" onClick="CheckIt();"><br>
+<input type=button value="Aufgeben :(" onClick="SolveIt();"><p>
+</center>
+</form>
+
+<!---<P><B>rothaarig; schw&auml;bisch; Salzbretzel; „Verbotene Liebe“; die
+Maus; Inline-Skates; S&uuml;dfrankreich; Sommersprossen; &Uuml;berraschungsei;
+Fahrrad; Girlie; Sonnenblume; keine Ahnung; Nichtraucher</B></P>--->
+
+<DIV ALIGN=right>
+<B><a href="javascript:parent.SearchPupil('Freymaier Beatrice');">Bea</a>
+und <a href="javascript:parent.SearchPupil('Zimmermann Sonja');">Sonja</a>
+</B></P></DIV>
+
+<br clear=all>
+
+<script language="JavaScript">
+ document.writeln(parent.footer);
+</script>
+
+</HTML>

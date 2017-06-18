@@ -1,0 +1,90 @@
+<HTML>
+<head>
+<script langauge="JavaScript">
+function ShowTeacherInfoBar()
+{
+  with (document)
+  {
+    var myteacher = 0;
+
+    if (parent.old_teacher == 1)
+      myteacher = parent.max_teachers - 1;
+    else
+      myteacher = parent.old_teacher - 1;
+
+    write("<a href=\"javascript:");
+    writeln("parent.ShowTeacher("+myteacher+");\">");
+
+    writeln("<img src=\"/abicd/images/"+parent.iconsdir+"/left.jpg\" alt=\""+parent.teachers[myteacher].name+"\" border=0></a>");
+
+    writeln("</center></td>");
+//    writeln("<td width=15%>");
+//    writeln("<a href=\"/teachers/table.htm\" target=\"mainwind\"><img src=\"/abicd/images/"+parent.iconsdir+"/table.jpg\" alt=\"Tabelle\"   border=0></a></td>");
+    writeln("<td width=50% valign=top><center><form name=auswahl method=post>");
+    parent.CreateTeacherList(parent.frames[1],parent.old_teacher);
+    writeln("</td><td valign=top>");
+    writeln("<a href=\"javascript:parent.CheckTeacherList();\"><img src=\"/abicd/images/"+parent.iconsdir+"/suchen.jpg\" alt=\"Suchen!\" border=0></a>");
+//    writeln("<input type=button value=\"Suchen!\" onClick=\"parent.CheckTeacherList();\">");
+    writeln("</form></center></td>");
+//    writeln("<td width=15%><a href=\"/teachers/foto.htm\"  target=\"mainwind\"><img src=\"/abicd/images/"+parent.iconsdir+"/foto.jpg\" alt=\"Foto aller Sch&uuml;ler\" border=0></a></td>");
+    write("<td width=20% valign=top><center><a href=\"javascript:");
+
+    if (parent.old_teacher == (parent.max_teachers-1))
+      myteacher = 1;
+    else
+      myteacher = parent.old_teacher+1;
+
+    writeln("parent.ShowTeacher("+myteacher+");\">");
+    writeln("<img src=\"/abicd/images/"+parent.iconsdir+"/right.jpg\" align=right alt=\""+parent.teachers[myteacher].name+"\" border=0></a>");
+    writeln("</center></td></table>");
+
+    /* Sound nur bei einer Soundkarte abspielen! */ 
+    if ((parent.soundcard) && (parent.teachers[parent.old_teacher].midfile != ""))
+    {
+      if (navigator.appName == "Microsoft Internet Explorer") /* F&uuml;r den Internet Explorer */
+      {
+
+        with (parent.sound.document)
+        {
+          open("text/html");
+          write("<html><head></head><body>");
+
+          write("<bgsound src=\"");
+          write(parent.teachers[parent.old_teacher].homedir+parent.teachers[parent.old_teacher].midfile);
+          writeln("\" autostart=true loop=infinite>");
+          write("</body></html>");
+          close();
+        }
+
+      }
+      else							/* F&uuml;r Netscape und andere */
+      {
+        with (parent.sound.document)
+        {
+          open("text/html");
+          write("<html><head></head><body>");
+
+          write("<embed src=\"");
+          write(parent.teachers[parent.old_teacher].homedir+parent.teachers[parent.old_teacher].midfile);
+           writeln("\" autostart=true loop=true>");
+          write("</body></html>");
+          close();
+        }
+
+      }
+    }
+  }
+}
+
+
+
+</script>
+</head>
+<body background="/abicd/images/bgs/sky01.gif">
+<center>
+<table width=100%><tr><td width=10% vspace=0 valign=top>
+<script language="JavaScript">ShowTeacherInfoBar();</script>
+</center>
+
+</body>
+</HTML>

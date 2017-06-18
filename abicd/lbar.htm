@@ -1,0 +1,98 @@
+<HTML>
+<head>
+<script language="JavaScript">
+
+if (parent.maxx < 1) parent.location.href="/abicd.htm";
+
+function ShowIcons()
+{
+  with (document)
+  { 
+      write("<center>");
+      if (!parent.werbfirst) werbung = parent.random(30);
+      else
+      {
+       werbung=100;
+       parent.werbfirst=false;
+      }
+      if (werbung < 5) 
+      {
+        write("<a href=\"javascript:parent.ShowLeiste(21);\">");
+        write("<img src=\"/werbung/ksk_640.jpg\" alt=\"KSK-Video\" vspace=10></a><p>");
+      } else
+      if (werbung < 10) 
+      {
+        write("<a href=\"javascript:parent.ShowLeiste(22);\">");
+        write("<img src=\"/werbung/alf_640.jpg\" alt=\"Alforno\" vspace=10></a><p>");        
+      } else
+      {
+        write("<a href=\"javascript:parent.ShowLeiste(20);\">");
+        write("<img src=\"/abicd/images/anims/ABIIANI.gif\" alt=\"Impressum\" vspace=10></a><p>");
+      }
+
+      write("<a href=\"javascript:parent.ShowLeiste(0);\">");
+      if (parent.leiste == 0)
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/starts5.jpg\" border=0 alt=\"Startseite\" vspace=1>");
+      else
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/starts1.jpg\" border=0 alt=\"Startseite\" vspace=1>");
+      write("</a><br>");
+
+
+      write("<a href=\"javascript:parent.ShowLeiste(1);\">");
+      if (parent.leiste == 1) 
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/pupils5.jpg\" border=0 alt=\"Sch&uuml;lerartikel\" vspace=1>");
+      else 
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/pupils1.jpg\" border=0 alt=\"Sch&uuml;lerartikel\" vspace=1>");
+      write("</a><br>");
+
+
+      write("<a href=\"javascript:parent.ShowLeiste(2);\">");
+      if (parent.leiste == 2)
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/teacher5.jpg\" border=0 alt=\"Lehrerartikel\" vspace=1>");
+      else 
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/teacher1.jpg\" border=0 alt=\"Lehrerartikel\" vspace=1>");
+      write("</a><br>");
+
+
+      write("<a href=\"javascript:parent.ShowLeiste(3);\">");
+      if (parent.leiste == 3)
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/bericht5.jpg\" border=0 alt=\"Berichte &uuml;ber Ausfl&uuml;ge\" vspace=1>");
+      else
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/bericht1.jpg\" border=0 alt=\"Berichte &uuml;ber Ausfl&uuml;ge\" vspace=1>");
+      write("</a><br>");
+
+
+      write("<a href=\"javascript:parent.ShowLeiste(4);\">");
+      if (parent.leiste == 4)
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/cdadds5.jpg\" border=0 alt=\"CD-Zugaben\" vspace=1>");
+      else
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/cdadds1.jpg\" border=0 alt=\"CD-Zugaben\" vspace=1>");
+      write("</a><br>");
+
+
+      write("<a href=\"javascript:parent.ShowLeiste(5);\">");
+      if (parent.leiste == 5)
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/werbung5.jpg\" border=0 alt=\"Werbung\" vspace=1>");
+      else
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/werbung1.jpg\" border=0 alt=\"Werbung\" vspace=1>");
+      write("</a><br>");
+
+
+      write("<a href=\"javascript:parent.ShowLeiste(6);\">");
+      if (parent.leiste == 6)
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/other5.jpg\" border=0 alt=\"Sonstiges\" vspace=1>");
+      else  
+        write("<img src=\"/abicd/images/"+parent.iconsdir+"/other1.jpg\" border=0 alt=\"Sonstiges\" vspace=1>");
+      write("</a><br>");
+  }
+}
+
+</script>
+</head>
+
+<body bgcolor=#000000 background="/abicd/images/bgs/left.gif" text=#FFFFFF link=#00FFFF vlink=#FF0000>
+<script language="JavaScript">
+  ShowIcons();
+</script>
+</body>
+</HTML>

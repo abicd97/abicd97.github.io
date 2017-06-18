@@ -1,0 +1,194 @@
+<HTML>
+<HEAD>
+<script language="JavaScript">
+function CheckForm()
+{
+  var mypoints = 0;
+  var precheck = false;
+  for (x = 0;x < 3;x++)
+  {
+    if (document.chemie.l1[x].checked == true) 
+    {
+     mypoints = mypoints + parseInt(document.chemie.l1[x].value);
+     precheck = true;
+    }
+  }
+  if (!precheck) {alert("Du musst alle Fragen beantworten!"); return(false);}
+  precheck = false;
+  for (x = 0;x < 4;x++)
+  {
+    if (document.chemie.l2[x].checked == true) 
+    {
+     mypoints = mypoints + parseInt(document.chemie.l2[x].value);
+     precheck = true;
+    }
+  }
+  if (!precheck) {alert("Du musst alle Fragen beantworten!"); return(false);}
+  precheck = false;
+
+
+  for (x = 0;x < 3;x++)
+  {
+    if (document.chemie.l3[x].checked == true) 
+    {
+     mypoints = mypoints + parseInt(document.chemie.l3[x].value);
+     precheck = true;
+    }
+  }
+  if (!precheck) {alert("Du musst alle Fragen beantworten!"); return(false);}
+  precheck = false;
+
+  for (x = 0;x < 3;x++)
+  {
+    if (document.chemie.l4[x].checked == true) 
+    {
+     mypoints = mypoints + parseInt(document.chemie.l4[x].value);
+     precheck = true;
+    }
+  }
+  if (!precheck) {alert("Du musst alle Fragen beantworten!"); return(false);}
+  precheck = false;
+
+  for (x = 0;x < 4;x++)
+  {
+    if (document.chemie.l5[x].checked == true) 
+    {
+     mypoints = mypoints + parseInt(document.chemie.l5[x].value);
+     precheck = true;
+    }
+  }
+  if (!precheck) {alert("Du musst alle Fragen beantworten!"); return(false);}
+  precheck = false;
+
+  for (x = 0;x < 3;x++)
+  {
+    if (document.chemie.l6[x].checked == true) 
+    {
+     mypoints = mypoints + parseInt(document.chemie.l6[x].value);
+     precheck = true;
+    }
+  }
+  if (!precheck) {alert("Du musst alle Fragen beantworten!"); return(false);}
+  precheck = false;
+
+  for (x = 0;x < 4;x++)
+  {
+    if (document.chemie.l7[x].checked == true) 
+    {
+     mypoints = mypoints + parseInt(document.chemie.l7[x].value);
+     precheck = true;
+    }
+  }
+  if (!precheck) {alert("Du musst alle Fragen beantworten!"); return(false);}
+  
+
+  alert("Du hast "+mypoints+" erreicht! Jetzt kommt die Auswertung...");
+  if (mypoints < 0) 
+  {
+   if (confirm("Bist Du sicher, dass Du die Fragen \"wahrheitsgetreu\" beantwortet hast?"))
+     alert("...dann stimmt irgendetwas mit Dir nicht... :((( ");
+  }
+  if (mypoints >= 50) 
+    location = "#i5066";
+  else
+  {
+    if (mypoints >= 20) 
+      location = "#i2049";
+    else
+    if (mypoints >= 0) 
+      location = "#i200";
+  }
+
+  return(true);
+}
+
+
+</script>
+</HEAD>
+
+<script language="JavaScript">
+ document.writeln(parent.ShowHeader("t", 25, 2, "Chemie GK"));
+</script>
+
+<h1>
+<center>
+Aus den geheimen Akten des A.B.I. , Akte 97</h1><br>
+<h3>Abs: hatsweitseodrei<br></h3>
+<h4>TOP SECRET!<br></h4>
+</center>
+<p>
+
+<img src="/teachers/paesold.che/pic1.jpg" align=left hspace=10 width=40%>Folgendes Dokument ist einzigartig, da als einziges teilweise &uuml;berliefert (die &uuml;brigen wurden von der im weiteren als Agent P&Auml; genannten Person aus dem &ouml;ffentlichen Verkehr gezogen). Das Dokument zeigt, ob sie chemie-p&auml;soldtauglich sind.<br clear=all>
+<form name="chemie">
+<pre>
+1. Sozialchemie
+ 1.1 Ihre Ankunftszeit zum Unterricht:
+     <input type=radio name=l1 value=10>A) Sie kommen p&uuml;nktlich        (10 VP)
+     <input type=radio name=l1 value=2>B) Sie kommen wenig zu sp&auml;t (bis 2 Min.)     (02 VP)
+     <input type=radio name=l1 value=0>C) Sie kommen viel zu sp&auml;t oder niemals      (00 VP)
+ 
+ 1.2 Ihr verhalten im Unterricht:
+     <input type=radio name=l2 value=10>A) Sie nehmen erregt am Unterricht teil.   (10 VP)
+     <input type=radio name=l2 value=0>B) Sie unterst&uuml;tzen Multitasking (lernen z.B. Mathe w&auml;hrend Chemie oder 
+        machen Hausaufgaben).   (00 VP)
+     <input type=radio name=l2 value=-2>C) Sie reden mit dem Nachbarn oder pfeifen, essen ....  (-2VP)
+     <input type=radio name=l2 value=-1>D) Sie versuchen, eine Entschuldigung im Unterricht zu schreiben (-1VP)
+         	
+ 1.3 Ihr Vorkenntnisse sind:
+     <input type=radio name=l3 value=8>A) Hervorragend  (Uniniveau 6.Semester)    (08VP)
+     <input type=radio name=l3 value=7>B) Ihre Vorkenntnisse sind mangelhaft, aber Sie bem&uuml;hen sich (07VP)
+     <input type=radio name=l3 value=3>C) Annehmbar, aber Sie sind auf des Lehrers Hilfe (z.B. Nomenklaturlekt&uuml;ren) 
+        angewiesen.  (03VP)
+
+2. Chemische Grammatik
+ 2.1 Wie stehen sie mit Pronomen?
+     <input type=radio name=l4 value=3>A) "Du" betrifft nur Sie selbst  (03VP)
+     <input type=radio name=l4 value=6>B) "Du" betrifft die ganze Klasse (06VP)
+     <input type=radio name=l4 value=0>C) "Du" bedeutet mir nichts, denn ich habe mit Lehrern kein pers&ouml;nliches
+        Verh&auml;ltnis (00 VP)
+
+ 2.2 Ihre Person: 
+     <input type=radio name=l5 value=-2>A) Hei&szlig;en sie Chr(Kr)istina? (-02VP)
+     <input type=radio name=l5 value=8>B) Hei&szlig;en sie Viktor, und sind sie bereit auf “Volker” oder Fi(c?)ktor zu
+        reagieren?  (08VP)
+     <input type=radio name=l5 value=2>C) Wie B), aber Sie reagieren nicht  ? (02VP)
+     <input type=radio name=l5 value=11>D) Hei&szlig;en Sie Axel oder Daniel ?  (10 + 1 VP) 
+
+3. Unterrichtseinstellung
+ 3.1 M&ouml;gen Sie Chemieunterricht mit wirklich vielen Versuchen ???
+     <input type=radio name=l6 value=10>A) JA!!!, besonders, wenn ich die Ergebnisse selber
+        auswerten darf !! (10 VP)
+     <input type=radio name=l6 value=-8>B) Nein (-8 VP)
+     <input type=radio name=l6 value=0>C) N&ouml;, aber ich habe ja einen Checker als Nebensitzer  (00VP)
+
+ 3.2 Suchen Sie einen Unterricht, wo ihnen alles ausf&uuml;hrlich erkl&auml;rt wird, und zu dem
+     Sie eine gute Portion Konzentration und Interesse mitbringen m&uuml;ssen ??
+     <input type=radio name=l7 value=10>A) Ja (10 VP)
+     <input type=radio name=l7 value=11>B) Ja, au&szlig;erdem halte ich f&uuml;r mein Leben gern Referate - um die Note zu ver
+        bessern und weil’s mich interessiert (10+1VP)
+     <input type=radio name=l7 value=11>D) Ja, au&szlig;erdem habe ich Bio- und /oder Physik G-/LK (10+1VP)
+     <input type=radio name=l7 value=0>E) Nein (Sie sind hoffnungslos durchgefallen)
+</pre>
+<p>
+<center>
+<input type=button value="Punkte berechnen!" onClick="CheckForm();"><input type=reset value="Reset">
+</center>
+</form>
+<h3>Auswertung</h3>
+<a name="i5066"><h4>50 bis 66 VP :</h4></a>
+<blockquote> Sie sind nicht nur ein guter Sch&uuml;ler, sondern auch bestens f&uuml;r den P&auml;sold-Chemieunterricht geeignet. Sie sollten auf jeden Fall den Kurs belegen und werden gute Kenntnisse und viel Spa&szlig; mit einem interessierten und kompetenten Lehrer haben. </blockquote>
+
+<a name="i2049"><h4>20 bis 49 VP :</h4></a><blockquote>
+	Sie sind ein Mensch, der es sich seine Unterrichtseinstellung &uuml;berlegen soll, bevor er in den Unterricht zum H. P&auml;sold, geht, um keine b&ouml;sen &Uuml;berraschungen zu erleben. Den Rest m&uuml;ssen Sie selber ausprobieren.</blockquote>
+<h4>
+<a name="i200">20 VP bis weniger :</h4></a><blockquote>
+Auch wenn auf Sie die Antwort 3.2.d) nicht zutrifft, ist Ihnen vom Unterricht beim H. P&auml;sold DRINGENDST abzuraten.</blockquote>
+<p>
+
+Am Fall arbeiteten Agents LongOne (Codename <a href="javascript:parent.SearchPupil('Siegle Viktor');">Viktor</a>) und ShortOne (Codename <a href="javascript:parent.SearchPupil('Grimm Oliver');">Oli</a>)
+
+<script language="JavaScript">
+  document.writeln(parent.footer);
+</script>
+
+</HTML>

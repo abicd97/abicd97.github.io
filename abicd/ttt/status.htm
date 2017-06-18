@@ -1,0 +1,564 @@
+<html>
+<head>
+<script language="JavaScript">
+  
+  var ttt = new Array(10);
+  var errors = true;
+  var nextplayer = 1;  
+  var opponent = new Array(3);
+  var random_counter = 1;
+  var remis = false;
+  var gameover = false;
+  var debug = false;
+  var undo = 0;
+
+  function StartGame()
+  {
+    if (confirm("Soll "+opponent[1].name+" das Spiel beginnen?\nDr&uuml;cke Abbrechen wenn "+opponent[2].name+" das Spiel anfangen soll!")) 
+      nextplayer = 2;
+    else
+      nextplayer = 1;
+    if (debug) alert(nextplayer);
+    parent.frames[1].location.href = "field.htm";
+    
+  }
+  function random(max)
+  {
+    random_counter = random_counter + random_counter;
+    datum = new Date();
+    myrandom = datum.getTime() * random_counter;
+    return(myrandom % max);  
+  }
+
+  function myopponent(picfile, status, name, points)
+  {
+    this.picfile = picfile;
+    this.status = status; // 1 = Player1; 2 = Player2; 10 = Computer Level 1; 11 = Computer Level 2; 13 = Computer Level 2
+    this.name = name;
+    this.points = points;
+  }
+
+  function FindNextPlayer()
+  {
+    if (nextplayer == 1)
+      nextplayer = 2;
+    else
+      nextplayer = 1;
+    return(opponent[nextplayer].picfile);
+  }
+
+  function Check4Winner()
+  {
+    gameover = true;
+    for (y = 0;y < 3;y++)
+    { 
+      if ((ttt[(y*3)+1] == ttt[(y*3+1)+1]) && (ttt[(y*3+1)+1] == ttt[(y*3+2)+1]) && (ttt[(y*3+2)+1] != "c.gif"))
+        return(true);
+    } 
+
+    for (x = 0;x < 3;x++)
+    {
+      if ((ttt[(0*3+x)+1] == ttt[(1*3+x)+1]) && (ttt[(1*3+x)+1] == ttt[(2*3+x)+1]) && (ttt[(2*3+x)+1] != "c.gif"))
+        return(true);
+    }
+
+    if ((ttt[(0*3+0)+1] == ttt[(1*3+1)+1]) && (ttt[(1*3+1)+1] == ttt[(2*3+2)+1]) && (ttt[(1*3+1)+1] != "c.gif"))
+      return(true);
+
+    if ((ttt[(0*3+2)+1] == ttt[(1*3+1)+1]) && (ttt[(1*3+1)+1] == ttt[(2*3+0)+1]) && (ttt[(1*3+1)+1] != "c.gif"))
+      return(true);
+
+    remis = true;
+    for (x = 0; x < 10; x++) 
+      if (ttt[x+1] == "c.gif") remis = false;
+    if (remis) alert("Remis!");
+    
+    gameover = false;
+    return(false);
+  }
+   
+  function ShowGameField(where)
+  {
+    var player = FindNextPlayer();   
+    if (debug) alert(nextplayer+"  "+player);
+    with (where)
+    {
+      write("<table width=100%><tr><td bgcolor=#9900cc><font face=\"Verdana, Arial, Helvetica\" color=#99ffcc><h1>Tic-Tac-Toe by SoftByte</h1></font></td></tR><tr><td>");
+      write("<h1><center>");
+      write(opponent[1].name+" vs. "+opponent[2].name);
+      write("</center></h1>");
+      write("</td></tr></table>");
+      write("<center><table border=3>");
+      for (y = 0; y < 3;y++)
+      {
+        write("<tr>");
+        for (x = 0; x < 3;x++)
+        {
+          if ((ttt[(y*3+x)+1] == "c.gif") && (!gameover))
+            write("<td><a href=\"javascript:parent.frames[0].PlayerMoves("+x+","+y+",'"+player+"');\"><img src=\""+ttt[(y*3+x)+1]+"\" alt=\""+x+","+y+"\" border=0></a></td>");
+          else
+            write("<td><img src=\""+ttt[(y*3+x)+1]+"\" alt=\""+x+","+y+"\" border=0></td>");
+        }
+        write("</tr>");
+      }
+      write("</table><p><form><input type=button value=\"Neues Spiel\" onClick=\"parent.frames[0].ReSetGame();\">");
+      write("<input type=button value=\"Spieloptionen &auml;ndern\" onClick=\"parent.frames[1].location.href='start.htm';\"></form></center>");
+      write("<center><table border><tr><th colspan=2>Standings</th></tr><tr><td>Player 1: "+opponent[1].name+"</td><td>"+opponent[1].points+"</td></tr>");
+      write("<tr><td>Player 2:  "+opponent[2].name+"</td><td>"+opponent[2].points+"</td></tr></table></center>");
+    }
+    if ((opponent[2].status > 9) && (player == opponent[2].picfile) && (!gameover)) 
+    {
+      if (debug) alert("Computer prepares a move!");
+      ComputerMoves();
+    }
+  };
+
+  function InitGame()
+  {
+    for (x = 1;x < 10; x++)
+    {
+      ttt[x] = "c.gif";
+    }
+    opponent[1] = new myopponent("x.gif",1,"Player",0);
+    opponent[2] = new myopponent("o.gif",2,"Computer",0);
+    gameover = false;
+    remis = false;
+  };
+
+  function ReSetGame()
+  {
+    for (x = 1;x < 10; x++)
+    {
+      ttt[x] = "c.gif";
+    }   
+    gameover = false;
+    remis = false;
+    StartGame();
+  };
+ 
+  function PlayerMoves(x, y, player)
+  {
+   
+    if (ttt[(y*3+x)+1] == "c.gif")
+    {
+      ttt[(y*3+x)+1] = player;
+    }
+    parent.frames[1].location.href = "field.htm";
+    if (Check4Winner()) 
+    {
+      if (opponent[1].picfile == player) 
+      {
+        alert(opponent[1].name+" hat gewonnen!");
+        opponent[1].points++;
+      }
+      else 
+      {
+        alert(opponent[2].name+" won!");
+        opponent[2].points++;
+      }
+    }
+  };
+  
+  function FindDangerousPos(withmove, player)
+  {
+    for (y = 0;y < 3;y++)
+    { 
+      if ( (ttt[(y*3+0)+1] == ttt[(y*3+1)+1]) && (ttt[(y*3+0)+1] == opponent[player].picfile) && (ttt[(y*3+2)+1] == "c.gif") )
+      { 
+        if (debug) alert("New Move: "+((y*3+2)+1));
+        if (withmove) ttt[(y*3+2)+1] = opponent[3-player].picfile;
+        undo = (y*3+2)+1;
+        return(true);
+      } 
+      
+      if ( (ttt[(y*3+1)+1] == ttt[(y*3+2)+1]) && (ttt[(y*3+1)+1] == opponent[player].picfile) && (ttt[(y*3+0)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((y*3+0)+1));
+        if (withmove) ttt[(y*3+0)+1] = opponent[3-player].picfile;
+        undo = (y*3+0)+1;
+        return(true);
+      } 
+
+       
+      if ( (ttt[(y*3+0)+1] == ttt[(y*3+2)+1]) && (ttt[(y*3+0)+1] == opponent[player].picfile) && (ttt[(y*3+1)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((y*3+1)+1));
+        if (withmove) ttt[(y*3+1)+1] = opponent[3-player].picfile;
+        undo = (y*3+1)+1;
+        return(true);
+      } 
+    } 
+
+    for (x = 0;x < 3;x++)
+    {
+      if ( (ttt[(0*3+x)+1] == ttt[(1*3+x)+1]) && (ttt[(0*3+x)+1] == opponent[player].picfile) && (ttt[(2*3+x)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((2*3+x)+1));
+        if (withmove) ttt[(2*3+x)+1] = opponent[3-player].picfile;
+        undo = (2*3+x)+1;
+        return(true);
+      }
+
+      if ( (ttt[(1*3+x)+1] == ttt[(2*3+x)+1]) && (ttt[(1*3+x)+1] == opponent[player].picfile) && (ttt[(0*3+x)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((0*3+x)+1));
+        if (withmove) ttt[(0*3+x)+1] = opponent[3-player].picfile;
+        undo = (0*3+x)+1;
+        return(true);
+      }
+
+      if ( (ttt[(0*3+x)+1] == ttt[(2*3+x)+1]) && (ttt[(0*3+x)+1] == opponent[player].picfile) && (ttt[(1*3+x)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((1*3+x)+1));
+        if (withmove) ttt[(1*3+x)+1] = opponent[3-player].picfile;
+        undo = (1*3+x)+1;
+        return(true);
+      }
+    }
+
+      if ( (ttt[(0*3+0)+1] == ttt[(1*3+1)+1]) && (ttt[(1*3+1)+1] == opponent[player].picfile) && (ttt[(2*3+2)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((2*3+2)+1));
+        if (withmove) ttt[(2*3+2)+1] = opponent[3-player].picfile;
+        undo = (2*3+2)+1;
+        return(true);
+      }
+
+      if ( (ttt[(1*3+1)+1] == ttt[(2*3+2)+1]) && (ttt[(1*3+1)+1] == opponent[player].picfile) && (ttt[(0*3+0)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((0*3+0)+1));
+        if (withmove) ttt[(0*3+0)+1] = opponent[3-player].picfile;
+        undo = (0*3+0)+1;
+        return(true);
+      }
+
+      if ( (ttt[(0*3+0)+1] == ttt[(2*3+2)+1]) && (ttt[(0*3+0)+1] == opponent[player].picfile) && (ttt[(1*3+1)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((1*3+1)+1));
+        if (withmove) ttt[(1*3+1)+1] = opponent[3-player].picfile;
+        undo = (1*3+1)+1;
+        return(true);
+      }
+
+      if ( (ttt[(0*3+2)+1] == ttt[(1*3+1)+1]) && (ttt[(0*3+2)+1] == opponent[player].picfile) && (ttt[(2*3+0)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((2*3+0)+1));
+        if (withmove) ttt[(2*3+0)+1] = opponent[3-player].picfile;
+        undo = (2*3+0)+1;
+        return(true);
+      }
+
+      if ( (ttt[(0*3+2)+1] == ttt[(2*3+0)+1]) && (ttt[(0*3+2)+1] == opponent[player].picfile) && (ttt[(1*3+1)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((1*3+1)+1));
+        if (withmove) ttt[(1*3+1)+1] = opponent[3-player].picfile;
+        undo = (1*3+1)+1;
+        return(true);
+      }
+
+      if ( (ttt[(2*3+0)+1] == ttt[(1*3+1)+1]) && (ttt[(2*3+0)+1] == opponent[player].picfile) && (ttt[(0*3+2)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((0*3+2)+1));
+        if (withmove) ttt[(0*3+2)+1] = opponent[3-player].picfile;
+        undo = (0*3+2)+1;
+        return(true);
+      }
+
+    return(false);    
+  }
+
+
+  function FindGoodPos()
+  {
+    for (y = 0;y < 3;y++)
+    { 
+      if ( (ttt[(y*3+0)+1] == ttt[(y*3+1)+1]) && (ttt[(y*3+0)+1] == opponent[2].picfile) && (ttt[(y*3+2)+1] == "c.gif") )
+      { 
+        if (debug) alert("New Move: "+((y*3+2)+1));
+        ttt[(y*3+2)+1] = opponent[2].picfile;
+        return(true);
+      } 
+      
+      if ( (ttt[(y*3+1)+1] == ttt[(y*3+2)+1]) && (ttt[(y*3+1)+1] == opponent[2].picfile) && (ttt[(y*3+0)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((y*3+0)+1));
+        ttt[(y*3+0)+1] = opponent[2].picfile;
+        return(true);
+      } 
+
+       
+      if ( (ttt[(y*3+0)+1] == ttt[(y*3+2)+1]) && (ttt[(y*3+0)+1] == opponent[2].picfile) && (ttt[(y*3+1)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((y*3+1)+1));
+        ttt[(y*3+1)+1] = opponent[2].picfile;
+        return(true);
+      } 
+    } 
+
+    for (x = 0;x < 3;x++)
+    {
+      if ( (ttt[(0*3+x)+1] == ttt[(1*3+x)+1]) && (ttt[(0*3+x)+1] == opponent[2].picfile) && (ttt[(2*3+x)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((2*3+x)+1));
+        ttt[(2*3+x)+1] = opponent[2].picfile;
+        return(true);
+      }
+
+      if ( (ttt[(1*3+x)+1] == ttt[(2*3+x)+1]) && (ttt[(1*3+x)+1] == opponent[2].picfile) && (ttt[(0*3+x)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((0*3+x)+1));
+        ttt[(0*3+x)+1] = opponent[2].picfile;
+        return(true);
+      }
+
+      if ( (ttt[(0*3+x)+1] == ttt[(2*3+x)+1]) && (ttt[(0*3+x)+1] == opponent[2].picfile) && (ttt[(1*3+x)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((1*3+x)+1));
+        ttt[(1*3+x)+1] = opponent[2].picfile;
+        return(true);
+      }
+    }
+
+      if ( (ttt[(0*3+0)+1] == ttt[(1*3+1)+1]) && (ttt[(1*3+1)+1] == opponent[2].picfile) && (ttt[(2*3+2)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((2*3+2)+1));
+        ttt[(2*3+2)+1] = opponent[2].picfile;
+        return(true);
+      }
+
+      if ( (ttt[(1*3+1)+1] == ttt[(2*3+2)+1]) && (ttt[(1*3+1)+1] == opponent[2].picfile) && (ttt[(0*3+0)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((0*3+0)+1));
+        ttt[(0*3+0)+1] = opponent[2].picfile;
+        return(true);
+      }
+
+      if ( (ttt[(0*3+0)+1] == ttt[(2*3+2)+1]) && (ttt[(0*3+0)+1] == opponent[2].picfile) && (ttt[(1*3+1)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((1*3+1)+1));
+        ttt[(1*3+1)+1] = opponent[2].picfile;
+        return(true);
+      }
+
+      if ( (ttt[(0*3+2)+1] == ttt[(1*3+1)+1]) && (ttt[(0*3+2)+1] == opponent[2].picfile) && (ttt[(2*3+0)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((2*3+0)+1));
+        ttt[(2*3+0)+1] = opponent[2].picfile;
+        return(true);
+      }
+
+      if ( (ttt[(0*3+2)+1] == ttt[(2*3+0)+1]) && (ttt[(0*3+2)+1] == opponent[2].picfile) && (ttt[(1*3+1)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((1*3+1)+1));
+        ttt[(1*3+1)+1] = opponent[2].picfile;
+        return(true);
+      }
+
+      if ( (ttt[(2*3+0)+1] == ttt[(1*3+1)+1]) && (ttt[(2*3+0)+1] == opponent[2].picfile) && (ttt[(0*3+2)+1] == "c.gif") )
+      {
+        if (debug) alert("New Move: "+((0*3+2)+1));
+        ttt[(0*3+2)+1] = opponent[2].picfile;
+        return(true);
+      }
+
+    return(false);    
+  }
+
+  function CheckMiddle()
+  {
+    if (ttt[(1*3+1)+1] == "c.gif")
+    {
+      ttt[(1*3+1)+1] = opponent[2].picfile;
+      return(true);
+    };
+    else
+      return(false);
+  }
+  
+  function CheckEdges()
+  {
+    if (ttt[(0*3+0)+1] == "c.gif")
+    {
+
+      ttt[(0*3+0)+1] = opponent[2].picfile;
+      return(true);
+    }
+    if (ttt[(2*3+0)+1] == "c.gif")
+    {
+      ttt[(2*3+0)+1] = opponent[2].picfile;
+      return(true);
+    }
+    if (ttt[(0*3+2)+1] == "c.gif")
+    {
+      ttt[(0*3+2)+1] = opponent[2].picfile;
+      return(true);
+    }
+    if (ttt[(2*3+2)+1] == "c.gif")
+    {
+      ttt[(2*3+2)+1] = opponent[2].picfile;
+      return(true);
+    }
+    return(false);
+  }
+  
+  function CheckAttacks()
+  {
+    var attack = new Array(10);
+    for (x = 1;x < 10;x++) attack[x] = 0;
+    for (x = 0; x < 3;x++)
+      for (y = 0;y < 3;y++)
+      {
+        if (ttt[(y*3+x)+1] == "c.gif") // nur wenn ein freies Feld
+        { 
+          for (xx = -2;xx < 3;xx++)
+          {
+            if (((x+xx) < 3) && ((x+xx) >= 0))
+            {
+              if (ttt[((y)*3+(x+xx))+1] == opponent[2].picfile)
+                attack[(y*3+x)+1] = attack[(y*3+x)+1] + 15;
+              if (ttt[((y)*3+(x+xx))+1] == opponent[1].picfile)
+                attack[(y*3+x)+1] = attack[(y*3+x)+1] - 1;                
+            }
+          }
+          
+          for (yy = -2;yy < 3;yy++)
+          {
+            if (((y+yy) < 3) && ((y+yy) >= 0))
+            {
+              if (ttt[((y+yy)*3+(x))+1] == opponent[2].picfile)
+                attack[(y*3+x)+1] = attack[(y*3+x)+1] + 15;
+              if (ttt[((y+yy)*3+(x))+1] == opponent[1].picfile)
+                attack[(y*3+x)+1] = attack[(y*3+x)+1] - 1;                
+            }
+          }
+    
+         
+          for (a = -2;a < 3;a++)
+          {
+            if (((y+a) < 3) && ((y+a) >= 0) && ((x+a) < 3) && ((x+a) >= 0))
+            {
+              if (ttt[((y+a)*3+(x+a))+1] == opponent[2].picfile)
+                attack[(y*3+x)+1] = attack[(y*3+x)+1] + 15;
+              if (ttt[((y+a)*3+(x+a))+1] == opponent[1].picfile)
+                attack[(y*3+x)+1] = attack[(y*3+x)+1] - 1;                
+            }
+          }
+          if (debug) alert("Pos: "+x+":"+y+" => "+attack[(y*3+x)+1]);
+        }
+      }
+    var mymax = 0;
+    var savepos = 0;
+    var myundo = 0;
+    for (a = 1;a < 10;a++)
+    {
+      if ((attack[a] >= mymax) && (attack[a] != 0))
+      {
+        if (ttt[a] != "c.gif") alert("Fehler");
+        ttt[a] = opponent[2].picfile;
+        if (FindDangerousPos(false,2)) 
+        { 
+          myundo = undo;
+//          alert(a+" "+myundo);
+          if (ttt[undo] != "c.gif") alert("Fehler");
+          ttt[undo] = opponent[1].picfile; 
+          if (!FindDangerousPos(false,1)) 
+          { 
+            mymax = attack[a];
+            savepos = a;
+          }
+          ttt[myundo] = "c.gif";
+        } 
+        ttt[a] = "c.gif";
+      }
+    }
+    if (debug) alert(mymax); 
+    if (mymax > 0)
+    {
+      if (debug) alert("Position: "+savepos);
+      ttt[savepos] = opponent[2].picfile;
+      return(true);
+    }
+    else
+    {
+      if (debug) alert("Attack hasn't found a possible move!");
+      return(false);  
+    }
+  }
+          
+  function ComputerMoves()
+  {  
+    if ((remis) && (debug)) alert("Computer: Remis");
+    if ((gameover) && (debug)) alert("Computer: Game over!");
+    if ((remis) || (gameover)) return(false);
+    myfield = random(9);
+    var counter = 1;
+    while ((ttt[myfield+1] != "c.gif") && (counter < 4))
+    {
+      myfield++;
+      if (myfield > 8) 
+      {
+        myfield = 0;
+        counter++;
+      }
+    }     
+    if (debug) alert("Computer moves to: "+(myfield+1)+" by random!");
+    
+    if (opponent[2].status == 10)
+    {
+      ttt[myfield+1] = opponent[2].picfile;
+      if (debug) alert("Random move");
+    }
+
+
+    if (opponent[2].status == 11)
+    {
+      if (!FindGoodPos())
+      {
+        if (!FindDangerousPos(true,1))
+        {
+          ttt[myfield+1] = opponent[2].picfile;
+          if (debug) alert("Random move");
+        }
+        else if (debug) alert("FindDangerousPos move");
+      }
+      else if (debug) alert("FindGoodPos move");
+    }
+
+    if (opponent[2].status == 12)
+    {
+      if (!FindGoodPos())
+      {
+        if (!FindDangerousPos(true,1))
+        {
+          if (!CheckMiddle())
+          {
+            if (!CheckAttacks())
+            {
+              if (!CheckEdges())
+              {
+                ttt[myfield+1] = opponent[2].picfile;
+                if (debug) alert("Random move");
+              } 
+              else if (debug) alert("CheckEdges move");
+            }
+            else if (debug) alert("CheckAttacks move");
+          }
+          else if (debug) alert("CheckMiddle move");
+        }
+        else if (debug) alert("FindDangerousPos move");
+      }
+      else if (debug) alert("FindGoodPos move");
+    }
+ 
+    if (Check4Winner()) 
+    {
+      alert("Ich habe gewonnen!");
+      opponent[2].points++;
+    }
+    parent.frames[1].location.href = "field.htm";
+    return(true);
+  }
+    
+</script>
+</head>
+<body></body></html>

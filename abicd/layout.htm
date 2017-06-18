@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>Layoutansicht</title>
+
+<script language="JavaScript">
+  
+  var seite=1;
+  var zoom=0;
+  var stdpath = parent.path;
+  var hactive=false;
+  var bactive=false;
+  
+  var anz_seiten = parent.anz_seiten;
+  var size=parseInt( (parent.maxx-20) / anz_seiten - 10);
+
+  function changed()
+  {
+    for (x = 0; x < this.layhead.document.forms[0].zoom.length; x++) 
+     if (this.layhead.document.forms[0].zoom[x].checked) zoom=x+1;
+    selectpage(this.layhead.document.settings.page.options.selectedIndex+1);
+  }
+
+  function switchside(dir)
+  {
+   if ( ( (seite+dir) > 0) && ( (seite+dir) <= anz_seiten) )
+   {
+    seite = seite + dir;
+    selectpage(seite); 
+   }
+  }
+
+  var layheadtext = "";
+  layheadtext = layheadtext + "<table width=100%><tr><form name=\"settings\">";
+  layheadtext = layheadtext + "<td valign=top><a href=\"javascript:parent.location.href='"+stdpath+"index.htm'\">CD-Layout</a></td>";
+  layheadtext = layheadtext + "<td valign=top><a href=\"javascript:parent.uebersicht();\">&Uuml;bersicht</a></td>";
+  layheadtext = layheadtext + "<td align=right valign=top>";
+  
+  layheadtext = layheadtext + "<input type=radio name=zoom checked value=1 onClick=\"parent.changed();\">Hoehe&nbsp;&nbsp;&nbsp;";
+  layheadtext = layheadtext + "<input type=radio name=zoom value=2 onClick=\"parent.changed();\">Breite&nbsp;&nbsp;&nbsp;";
+  layheadtext = layheadtext + "<input type=radio name=zoom value=3 onClick=\"parent.changed();\">Original&nbsp;&nbsp;&nbsp;";
+  layheadtext = layheadtext + "<input type=radio name=zoom value=4 onClick=\"parent.changed();\">x2&nbsp;&nbsp;&nbsp;";
+
+  layheadtext = layheadtext + "</select></td>";
+  layheadtext = layheadtext + "<td align=right>";
+  layheadtext = layheadtext + "<a href=\"javascript:parent.switchside(-1);\"><img src=\"/abicd/images/icons/minus.gif\" border=0></a>";
+
+  layheadtext = layheadtext + "<select name=page size=1 onChange=\"parent.changed();\">";
+    for (x=1; x <= anz_seiten; x++)
+        layheadtext = layheadtext + "<option value="+x+">Seite "+x;
+
+  layheadtext = layheadtext + "</select>";
+  layheadtext = layheadtext + "<a href=\"javascript:parent.switchside(1);\"><img src=\"/abicd/images/icons/plus.gif\" border=0></a>";
+  layheadtext = layheadtext + "</td>";
+
+  layheadtext = layheadtext + "</form></tr></table>";
+
+  var laybodytext="not defined yet";
+
+  if (anz_seiten == 1) {
+                         zoom=1;
+            	         selectpage(1);
+		       }	
+                   else uebersicht();
+
+  function uebersicht()
+  {
+   zoom=0;
+   showpage(0);
+  }
+
+  function selectpage(x)
+  {
+    seite=x;
+    if (hactive) 
+    {
+     if (zoom == 0)
+     {
+      for (x = 0; x < this.layhead.document.forms[0].zoom.length; x++) 
+       if (this.layhead.document.forms[0].zoom[x].checked) zoom=x+1;
+      if (zoom == 0) zoom=1;
+     }
+     this.layhead.document.settings.page.options.selectedIndex = seite-1;
+     this.layhead.document.settings.zoom[zoom-1].checked = true;
+    }
+    showpage(seite);
+  }
+
+  function showpage(x)
+  {
+   if (zoom == 0) 
+   {
+     laybodytext = "<center><table><tr>";
+     for (x = 1; x <= anz_seiten; x++)
+     {
+      laybodytext = laybodytext + "<td width="+size+" align=middle>";
+      laybodytext = laybodytext + "Seite: "+x+" von "+anz_seiten+"<br>";
+      laybodytext = laybodytext + "<a href=\"javascript:parent.selectpage("+x+");\">";
+      laybodytext = laybodytext + "<img src=\""+stdpath+"/layout"+x+".gif"+"\" width="+size+">";
+      laybodytext = laybodytext + "</a>";
+      laybodytext = laybodytext + "</td>";
+     }
+     laybodytext = laybodytext + "</tr></table></center>";
+   }
+   else
+   {
+    if (zoom == 1) { laybodytext = "<img src=\""+stdpath+"/layout"+x+".gif\" height=100%>"; }
+    else
+    if (zoom == 2) { laybodytext = "<img src=\""+stdpath+"/layout"+x+".gif\" width=100%>"; }
+    else
+    if (zoom == 3) { laybodytext = "<img src=\""+stdpath+"/layout"+x+".gif\">"; }
+    else
+    if (zoom == 4) { laybodytext = "<img src=\""+stdpath+"/layout"+x+".gif\" width="+1658+">"; }
+    laybodytext = "<center>"+laybodytext+"</center>";
+   }
+   if (bactive) this.laybody.location.href="laybody.htm";
+  }
+
+</script>
+
+</head>
+<frameset rows="50,*" frameborder=0 framespacing=0 border=0>
+  <frame src="/abicd/layhead.htm" name="layhead" marginheight=0 marginwidth=0 scrolling=no>
+  <frame src="/abicd/laybody.htm" name="laybody" marginheight=0 marginwidth=0 scrolling=auto>
+</frameset> 
+</html>

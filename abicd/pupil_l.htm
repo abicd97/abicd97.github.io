@@ -1,0 +1,85 @@
+<HTML>
+<head>
+<!-- Sch&uuml;ler: -->
+<script language="JavaScript">
+function ShowPupilInfoBar()
+{
+  with (document)
+  {
+    var mypupil = 0;
+
+    if (parent.akt_pupil == 1)
+      mypupil = parent.max_pupils - 1;
+    else
+      mypupil = parent.akt_pupil - 1;
+
+    write("<table height=45 width=100%><tr><td valign=top><a href=\"javascript:");
+    write("parent.ShowPupil("+mypupil+");\">");
+
+    write("<img src=\"/abicd/images/"+parent.iconsdir+"/left.jpg\" alt=\""+parent.pupils[mypupil].name+"\" border=0></a>");
+
+    write("<a href=\"/pupils/table.htm\" target=\"mainwind\"><img src=\"/abicd/images/"+parent.iconsdir+"/table.jpg\" alt=\"Tabelle\"   border=0></a></td>");
+    write("<td valign=top><form name=auswahl>");
+    write("<select name=plist size=1 onChange=\"parent.CheckSearchList();\">")
+    parent.CreatePupilList(parent.frames[1],parent.akt_pupil);
+    write("</select>");
+    write("</td><td valign=top>");
+
+//    write("<input type=button value=\"Suchen\" onClick=\"parent.CheckSearchList();\">");
+    write("<a href=\"javascript:parent.CheckSearchList();\"><img src=\"/abicd/images/"+parent.iconsdir+"/suchen.jpg\" alt=\"Suchen\" border=0></a>");
+    write("</form></td>");	
+
+    write("<td valign=top align=right><a href=\"javascript:parent.ShowPupil(62);\"><img src=\"/abicd/images/"+parent.iconsdir+"/foto.jpg\" alt=\"Foto aller Sch&uuml;ler\" border=0 ></a>");
+    write("<a href=\"javascript:");
+
+    if (parent.akt_pupil == (parent.max_pupils-1))
+      mypupil = 1;
+    else
+      mypupil = parent.akt_pupil+1;
+    write("parent.ShowPupil("+mypupil+");\">");
+    write("<img src=\"/abicd/images/"+parent.iconsdir+"/right.jpg\" alt=\""+parent.pupils[mypupil].name+"\" border=0 ></a>");
+    write("</td></tr></table></center>");
+
+    /* Sound nur bei einer Soundkarte abspielen! */ 
+
+    if ((parent.soundcard) && (parent.pupils[parent.akt_pupil].midfile != "") && (parent.akt_pupil != parent.veryold_pupil))
+    {
+      if (navigator.appName == "Microsoft Internet Explorer") /* F&uuml;r den Internet Explorer */
+      {
+
+        with (parent.sound.document)
+        {
+          open("text/html");
+          write("<html><head></head><body>");
+          write("<bgsound src=\"");
+          write(parent.pupils[parent.akt_pupil].homedir+parent.pupils[parent.akt_pupil].midfile);
+          writeln("\" autostart=true loop=infinite>");
+          write("</body></html>");
+          close();
+        }
+      }
+      else							/* F&uuml;r Netscape und andere */
+      {
+        with (parent.sound.document)
+        {
+          open("text/html");
+          write("<html><head></head><body>");
+          write("<embed src=\"");
+          write(parent.pupils[parent.akt_pupil].homedir+parent.pupils[parent.akt_pupil].midfile);
+          write("\" autostart=true loop=true>");
+          write("</body></html>");
+          close();
+        }
+      }
+    }
+  parent.veryold_pupil = parent.akt_pupil;
+  }
+}
+</script>
+</head>
+<body background="/abicd/images/bgs/sky01.gif"><font face="Verdana" topmargin=0>
+
+<script language="JavaScript">ShowPupilInfoBar();</script>
+</body>
+</html>
+

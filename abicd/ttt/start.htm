@@ -1,0 +1,146 @@
+<html>
+<script language="JavaScript">
+  function CheckForm()
+  {
+  parent.frames[0].InitGame(); 
+  var mylevel = 255;
+  parent.frames[0].opponent[1].name = document.gameoptions.player1.value;
+  parent.frames[0].opponent[2].name = document.gameoptions.player2.value;
+
+  for (x = 0; x < 3;x++)
+  {
+    if (document.gameoptions.level[x].checked)
+    {
+      mylevel = x;
+    }
+  }
+
+  for (x = 0; x < 2;x++)
+  {
+    if (document.gameoptions.gamemode[x].checked)
+    {
+      mymode = x;
+    }
+  }
+  
+  if (mymode == 0)
+  {
+    parent.frames[0].opponent[1].status = 1;
+    parent.frames[0].opponent[2].status = 2;
+  }
+  else
+  {
+    parent.frames[0].opponent[1].status = 1;
+    parent.frames[0].opponent[2].status = mylevel+10;
+    parent.frames[0].opponent[2].name = "Computer Level "+(mylevel+1);
+  }   
+//  parent.frames[0].debug = document.gameoptions.debugmode.checked;
+  if (document.gameoptions.o_player[0].checked == document.gameoptions.x_player[0].checked)
+  {
+    alert("Beide Spieler k&ouml;nnen nicht dasselbe Zeichen benutzen!");
+  }
+  else
+  {
+    if (document.gameoptions.o_player[0].checked)
+    {
+      parent.frames[0].opponent[1].picfile = "o.gif";
+      parent.frames[0].opponent[2].picfile = "x.gif";
+    };
+    else
+    {
+      parent.frames[0].opponent[1].picfile = "x.gif";
+      parent.frames[0].opponent[2].picfile = "o.gif";
+    }
+    if (parent.frames[0].debug) alert("Level: "+mylevel+"\nGamemode: "+mymode);
+     
+    parent.frames[0].StartGame();
+  }
+}
+   
+</script>
+<body bgcolor=white background="bg.gif">
+<font face="Verdana, Arial">
+<table width=100%>
+<tr>
+<td bgcolor=#9900cc>
+<font color=#99ffcc>
+<h1>Tic-Tac-Toe</h1>
+</font>
+</td>
+</tr>
+</table>
+<hr>
+Das Ergebnis dieses Spiels kann man wahrscheinlich auf den meisten Tischen unserer Schule vorfinden. 
+Vier einfache Striche, von denen jeweils zwei parallel und zwei senkrecht zu einander liegen. 
+Dazwischen einige Kreuze sowie auch ein paar Kreise... Wer kennt dieses Bild nicht?<p>
+Um soetwas zu vermeiden, pr&auml;sentieren wir Euch heute das erste Tic-Tac-Toe-Spiel geschrieben in JavaScript.<br>
+Die Spielweise werd hier nicht weiter erkl&auml;rt, weil sie allen bekannt ist.<p>
+<form name="gameoptions">
+<center>
+<table>
+<tr>
+<th>
+Spieler:
+</th>
+<th>
+Spielart: 
+</th>
+<th>
+Computer Level:
+</th>
+</tr>
+<tr>
+<td valign=top>
+Player1: <input type=text name="player1" size=20 maxlength=20 value="Player"><br>
+Player2: <input type=text name="player2" size=20 maxlength=20 value="Computer"><p>
+</td>
+<td valign=top>
+<input type=radio name=gamemode value=1> Player vs. Player<br>
+<input type=radio name=gamemode value=2 checked> Player vs. Computer<br>
+</td>
+<td valign=top>
+<input type=radio name=level value=1> Level 1 (leicht)<br>
+<input type=radio name=level value=2 checked> Level 2 (mittel)<br>
+<input type=radio name=level value=3> Level 3 (schwer) <br>
+</td>
+</tr>
+<!--
+<tr>
+<td colspan=3>
+<input type=checkbox name=debugmode>Debug Mode
+</td>
+</tr>
+-->
+</table>
+<p>
+<table>
+<tr>
+<td width=150>
+<center>
+<img src="o.gif"><br>
+<input type=radio name=o_player checked>Player 1<br>
+<input type=radio name=o_player>Player 2<br>
+</center>
+</td>
+<td width=150>
+<center>
+<img src="x.gif"><br>
+<input type=radio name=x_player>Player 1<br>
+<input type=radio name=x_player checked>Player 2<br>
+</center>
+</td>
+</tr>
+</table>
+<p>
+
+<input type=button value="Spiel beginnen!" onClick="CheckForm();">
+<input type=reset value="Vorgaben wiederherstellen">
+</center>
+</form>
+<p>
+<hr>
+<center>
+Die jeweils neuste Version dieses Spiels kann auf der <a href="http://www.geocities.com/ResearchTriangle/Lab/1565/">Homepage von Adrian Stabiszewski</a> gefunden werden! <br> Demn&auml;chst auch mit Level 4!<br>
+</font>
+</body>
+</html>

@@ -1,0 +1,702 @@
+<TITLE>ABI CDRom 1997</TITLE>
+<TITLE>-</TITLE>
+<TITLE>--</TITLE>
+<TITLE>---</TITLE>
+<TITLE>----</TITLE>
+<TITLE>-----</TITLE>
+<TITLE>------</TITLE>
+<TITLE>-------</TITLE>
+<TITLE>--------</TITLE>
+<TITLE>---------</TITLE>
+<TITLE>----------</TITLE>
+<TITLE>-----------</TITLE>
+<TITLE>------------</TITLE>
+<TITLE>-------------</TITLE>
+<TITLE>--------------</TITLE>
+<TITLE>---------------</TITLE>
+<TITLE>----------------</TITLE>
+<TITLE>-----------------</TITLE>
+<TITLE>------------------</TITLE>
+<TITLE>-------------------</TITLE>
+<TITLE>--------------------</TITLE>
+<TITLE>A-------------------</TITLE>
+<TITLE>AB------------------</TITLE>
+<TITLE>ABI-----------------</TITLE>
+<TITLE>ABI C---------------</TITLE>
+<TITLE>ABI CD--------------</TITLE>
+<TITLE>ABI CDR-------------</TITLE>
+<TITLE>ABI CDRo------------</TITLE>
+<TITLE>ABI CDRom-----------</TITLE>
+<TITLE>ABI CDRom 1---------</TITLE>
+<TITLE>ABI CDRom 19--------</TITLE>
+<TITLE>ABI CDRom 199-------</TITLE>
+<TITLE>ABI CDRom 1997------</TITLE>
+<TITLE>ABI CDRom 1997-----</TITLE>
+<TITLE>ABI CDRom 1997----</TITLE>
+<TITLE>ABI CDRom 1997---</TITLE>
+<TITLE>ABI CDRom 1997--</TITLE>
+<TITLE>ABI CDRom 1997-</TITLE>
+<TITLE>ABI CDRom 1997</TITLE>
+
+<HTML>
+<HEAD>
+<TITLE>ABI CDRom 1997</TITLE>
+
+<!-- Version vom 21:41 21.07.97 -->
+<!-- Diese Page stellt eine Sammlung versch. Javascripts dar. Alle Scripts wurden von SoftByte erstellt! (c) 1997 -->
+
+<script language="JavaScript">
+  var maxx = 0;
+  var maxy = 0;
+
+
+  // ### for picture-view (aka layout) ###
+  var path = location.href;
+/*  function bild(pfad, name, relsize, abssize, sizzle) 
+  {
+   this.pfad = pfad;
+   this.name = name;
+   this.relsize = relsize;
+   this.abssize = abssize;
+   this.sizzle = sizzle;
+  }
+  var bilder = new Array(20);*/
+  var footer="";
+  var anz_seiten = 0;
+
+  var basepath = path.substring(0, path.lastIndexOf("abicd.htm"));
+  var images = "/abicd/images/";
+
+  var soundcard = true;   /* Zeigt an, ob der Benutzer eine Soundkarte ausgew&auml;hlt hat. */
+  var i_oldframe = 255;
+  var i_oldicon = ""; 
+  var i_oldiconnr = 0; 
+  var random_counter = 1;
+
+  var max_pupils = 63;
+  var pupils = new Array(63);
+
+  var max_teachers = 49;
+  var teachers = new Array(49);
+
+  var RanBGS = new Array(32);
+
+  var animation=1;
+  var teacher_bg = true;
+
+  var iconsdir = "icons024";
+  var iconsend = "024";
+  var old_leiste = 0;
+  var leiste = 0;
+
+
+  var akt_pupil = 1;
+  var old_pupil = 62;
+  var veryold_pupil = 0;
+
+  var old_teacher = 48; /* 101 */
+  var werb=true;
+  var werbfirst = true;
+  
+/* ################################### Object Pupil ########################################### */
+
+function pupil(list_id, name, homedir, midfile, wavfile, xcoord, ycoord, rad, lk1, lk2) 
+{
+  this.list_id = list_id;
+  this.name = name;
+  this.homedir = homedir;
+  this.midfile = midfile;
+  this.wavfile = wavfile;
+  this.xcoord = xcoord;
+  this.ycoord = ycoord;
+  this.rad = rad;
+  this.lk1 = lk1;
+  this.lk2 = lk2;
+};
+/* ################################### Object Pupil ########################################### */
+
+
+/* ################################### Pupil Routines ########################################### */
+
+function CreatePupilList(into_frame, preselected)
+{
+  with (into_frame.document)
+  {
+    for (x = 1;x < max_pupils;x++)
+    {
+      write("<option");
+      if (x == preselected) write(" selected "); 
+      write(" value=");
+      write(pupils[x].list_id);
+      write(">");
+      writeln(pupils[x].name);
+    }
+  }
+};
+
+function ShowAllPupils(where)
+{
+  with (where.document)
+  { 
+    write("<map name=\"alle\">");
+    for (x = 1;x < max_pupils;x++)
+    {
+      write("<area shape=circle coords=\"");
+      write(Recalc(pupils[x].xcoord)+","+Recalc(pupils[x].ycoord)+","+Recalc(pupils[x].rad)+"\"");
+      write(" href=\"javascript:parent.SearchPupil('"+pupils[x].name+"');\">");
+    }
+    write("</map>");
+    write("<img src=\"/abicd/images/"+iconsdir+"/title.jpg\" usemap=\"#alle\"  border=0>");
+//width=\""+parent.maxx+"\"
+  }
+};
+
+function ShowPupilsAsTable(where)
+{
+  with (where.document)
+  {
+    write("<table width=94%><tr><th bgcolor=#808080 width=33%>Namen</th><th bgcolor=#808080 width=33%>Namen</th><th bgcolor=#808080 width=34%>Namen</th></tr>");
+    for (y = 0;y < 21;y++)
+    {
+      write("<tr>");
+      for (x = 0;x < 3;x++)
+      { 
+        if ((x*21+y+1) < max_pupils)
+        {
+          write("<td><center><a href=\"javascript:parent.ShowPupil("+(x*21+y+1)+");\">"+pupils[x*21+y+1].name+"</a></center></td>");
+        }
+      }
+      write("</tr>");
+    } 
+    write("</table>");
+  }
+};
+
+function ShowPupil(akt_pupil)
+{
+  ShowPupilTB(akt_pupil); 
+  parent.frames[3].location.href = pupils[akt_pupil].homedir+"index.htm";
+};
+
+function ShowMyPupil(akt_pupil)
+{
+  old_pupil = akt_pupil;
+  if (old_leiste != 1) 
+    ShowLeiste(1);
+  else 
+    ShwoPupil(akt_pupil);
+};
+
+function CheckSearchList()
+{
+  ShowPupil(parent.frames[1].document.auswahl.plist.options.selectedIndex+1);
+};
+
+function SearchPupil(name)
+  {
+   var nname = "";
+   for (x = 0; x < name.length; x++)
+   {
+    if (name.charAt(x) == "�") nname = nname + "&szlig;";
+    else
+    if (name.charAt(x) == "�") nname = nname + "&eacute;";
+    else
+    if (name.charAt(x) == "�") nname = nname + "&auml;";
+    else
+    if (name.charAt(x) == "�") nname = nname + "&Auml;";
+    else
+    if (name.charAt(x) == "�") nname = nname + "&ouml;";
+    else
+    if (name.charAt(x) == "�") nname = nname + "&Ouml;";
+    else
+    if (name.charAt(x) == "�") nname = nname + "&uuml;";
+    else
+    if (name.charAt(x) == "�") nname = nname + "&Uuml;";
+    else
+    nname = nname + name.charAt(x);
+   }
+   name = nname;
+   var result = 0;
+   for (x = 1; x < max_pupils; x++)
+   {
+    if (pupils[x].name == name) result = x;
+   }
+   if (result > 0) ShowMyPupil(result); else alert(name + " not found!");
+  }
+
+
+/* ################################### Pupil Routines ########################################### */
+
+/* ################################### Object Teacher ########################################### */
+
+function teacher(list_id, name, kurs, homedir, midfile, headpic)
+{
+  this.list_id = list_id;
+  this.name = name;
+  this.kurs = kurs;
+  this.homedir = homedir.toLowerCase();
+  this.midfile = midfile;
+  this.headpic = headpic;
+};
+
+/* ################################### Object Teacher ########################################### */
+
+/* ################################### Teacher Routines ########################################### */
+
+function CreateTeacherList(into_frame, preselected)
+{
+/* Lehrer/Fach: */
+  with (into_frame.document)
+  {
+    writeln("<select name=\"tlist\" size=1 onChange=\"parent.CheckTeacherList();\">")
+    for (x = 1;x < max_teachers;x++)
+    {
+      write("<option");
+      if (x == preselected) write(" selected "); 
+      write(" value=");
+      write(teachers[x].list_id);
+      write(">");
+      write(teachers[x].name);
+      write(' - '+teachers[x].kurs);
+    }
+   writeln("</select>");
+  }
+};
+
+function CreateTeacherTable(where)
+{
+  with (where.document)
+  {
+    writeln("<table>");
+    for (y = 0; y < 8; y++)
+    {
+      writeln("<tr>");
+      for (x = 0; x < 6; x++)
+      {
+        if (y*6+x+1 < max_teachers)
+        {
+          write("<td valign=top><center><a href=\"JavaScript:parent.ShowTeacher("+(y*6+x+1)+");\"><font size=-2>");
+          write("<img src=\"/teachers/heads/"+teachers[y*6+x+1].headpic+"\" border=0><br>"+teachers[y*6+x+1].name+"<br>"+teachers[y*6+x+1].kurs);
+          writeln("</font></center></td>");
+        } 
+      }
+      writeln("</tr>");
+    }
+    writeln("</table>");
+  }
+}
+
+function ShowTeacher(akt_teacher)
+{
+  ShowTeacherTB(akt_teacher); 
+  parent.frames[3].location.href = teachers[akt_teacher].homedir+"index.htm";
+  old_teacher = akt_teacher;
+};
+
+function ShowMyTeacher(akt_teacher)
+{
+  old_teacher = akt_teacher;
+  if (old_leiste != 2) 
+    ShowLeiste(2);
+  else 
+    ShwoTeacher(akt_teacher);
+};
+
+
+function CheckTeacherList()
+{
+  ShowTeacher(parent.frames[1].document.auswahl.tlist.options.selectedIndex+1);
+};
+
+/* ################################### TB Routines ########################################### */
+
+function ShowPupilTB(newakt_pupil)
+{
+  akt_pupil = newakt_pupil;
+  parent.frames[1].location.href = "/abicd/pupil_l.htm";
+};
+
+function ShowTeacherTB(newakt_teacher)
+{
+  akt_teacher = newakt_teacher;
+  parent.frames[1].location.href = "/abicd/teach_l.htm";
+};
+
+function ShowRecordsTB(myframe)
+{
+  with (myframe.document)
+  {  
+    open("text/html");
+    write("<html><head></head>");
+    write("<body background=\"/abicd/images/bgs/sky01.gif\"><font face=\"Verdana\">");
+    write("</body></html>");
+    close();
+  }
+};
+
+
+function ShowZugabenTB(myframe)
+{
+  with (myframe.document)
+  {  
+    open("text/html");
+    write("<html><head></head>");
+    write("<body background=\"/abicd/images/bgs/sky01.gif\"><font face=\"Verdana\">");
+    write("</body></html>");
+    close();
+  }
+};
+
+function ShowWerbungTB(myframe)
+{
+  with (myframe.document)
+  {  
+    open("text/html");
+    write("<html><head></head>");
+    write("<body background=\"/abicd/images/bgs/sky01.gif\"><font face=\"Verdana\">");
+    write("</body></html>");
+    close();
+  }
+};
+
+function ShowOtherTB(myframe)
+{
+  with (myframe.document)
+  {  
+    open("text/html");
+    write("<html><head></head>");
+    write("<body background=\"/abicd/images/bgs/sky01.gif\"><font face=\"Verdana\">");
+    write("</body></html>");
+    close();
+  }
+};
+
+function ShowMainTB(myframe)
+{
+  with (myframe.document)
+  {  
+    open("text/html");
+    write("<html><head></head>");
+    write("<body background=\"/abicd/images/bgs/sky01.gif\"><font face=\"Verdana\">");
+    write("</body></html>");
+    close();
+  }
+};
+
+function ShowLeiste(newleiste)
+{ 
+    leiste = newleiste;
+    if (newleiste == 0)     // ********** Startseite ***************
+    {
+      ShowMainTB(parent.frames[1]);
+      parent.frames[3].location.href = "/abicd/main.htm";
+    }
+    if (newleiste == 1)     // ************* Sch&uuml;ler ***************
+    {
+      ShowPupil(old_pupil);
+    }
+    if (newleiste == 2)     // ************* Lehrer ****************
+    {
+      ShowTeacher(old_teacher);
+    }
+    if (newleiste == 3)     // ************* Berichte **************
+    {
+      parent.frames[3].location.href = "/abicd/records.htm";
+      ShowRecordsTB(parent.frames[1]);
+    } 
+    if (newleiste == 4)     // ************ CD-Zugaben *************
+    {
+      parent.frames[3].location.href = "/abicd/addons.htm";
+      ShowZugabenTB(parent.frames[1]);
+    } 
+    if (newleiste == 5)     // ************** Werbung **************
+    {
+      parent.frames[3].location.href = "/werbung/werbung.htm";
+      ShowWerbungTB(parent.frames[1]);
+    } 
+    if (newleiste == 6)     // ************* Sonstiges *************
+    {
+      parent.frames[3].location.href = "/abicd/other.htm";
+      ShowOtherTB(parent.frames[1]);
+    }  
+    if (newleiste == 20)    // ************** Impressum *************
+    {
+      parent.frames[3].location.href = "/abicd/impress.htm";
+      ShowMainTB(parent.frames[1]);
+    }
+    if (newleiste == 21)    // ************* KSK-Werbung ************
+    {
+      parent.frames[3].location.href = "/werbung/ksk.htm";
+      ShowMainTB(parent.frames[1]);
+    }
+    if (newleiste == 22)    // ********** Alforno-Werbung ***********
+    {
+      parent.frames[3].location.href = "/werbung/alforno.htm";
+      ShowMainTB(parent.frames[1]);
+    }
+
+  parent.frames[2].location.href = "/abicd/lbar.htm";   //**** linke Leiste anzeigen ****
+};
+
+/* ###################################  Object Random Background ################################ */
+
+function RanBG(bgfile, counter, suitcol1, suitcol2)
+{
+  this.bgfile = bgfile;
+  this.counter = counter;
+  this.suitcol1 = suitcol1;
+  this.suitcol2 = suitcol2;
+}
+
+/* ###################################  Random Background Routines ############################## */
+/* look into logo.htm */
+
+/* ###################################  Header Routines ################################ */
+
+function ShowWerbung(nr)
+{
+ var r = "";
+ if (werb) 
+ {
+  r = r + "<table width=100%><tr><td width=72%><hr></td><td width=16% align=middle>Anzeige:</td><td width=12%><hr></td></tr></table><center>";
+  if (nr < 5)
+  {
+   r = r + "<img src=\"/werbung/minze.gif\" width=50%>";
+  } else 
+  if (nr < 10)
+  {
+   r = r + "<img src=\"/werbung/joker.gif\" width=90%>";
+  } else
+  if (nr < 15)
+  {
+   r = r + "<img src=\"/werbung/fredmack.gif\" width=100%>";
+  } else
+  if (nr < 20)
+  {
+   r = r + "<img src=\"/werbung/theater.jpg\" width=90%>";
+  } else
+  if (nr < 25)
+  {
+   r = r + "<img src=\"/werbung/frank.gif\" width=90%>";
+  } else
+  if (nr < 28)
+  {
+   r = r + "<img src=\"/werbung/alforno.gif\" width=90%>";
+  } else
+  if (nr < 33)
+  {
+   r = r + "<img src=\"/werbung/biz128.gif\" width=90%>";
+  } else
+  if (nr < 38)
+  {
+   r = r + "<img src=\"/werbung/voe800.jpg\" width=55%>";
+  } else
+  if (nr < 42)
+  {
+   r = r + "<img src=\"/werbung/anton800.jpg\" width=90%>";
+  } else
+  {
+   r = "";
+  }
+  if (nr < 42) r = r + "</center><hr>";
+ }
+ return(r);
+}
+
+function showheader(line1, line2, nr)
+  {
+   headext = ".gif";
+   var r = "<table cellpadding=0 border=0 cellspacing=0 width=" + parent.maxx + ">";
+   var x1 = parseInt(maxx);
+   var y1 = parseInt(maxx * 8 / 1024);
+   var x2 = parseInt(maxx * 50 / 1024);
+   var y2 = parseInt(maxx * 58 / 1024);
+   var x3 = parseInt(maxx * 368.6 / 1024);
+   var y3 = y2;
+   var x4 = parseInt(maxx * 115 / 1024);
+   var y4 = x4;
+   var x5 = parseInt(maxx * 287 / 1024);
+   var y5 = parseInt(maxx * 65 / 1024);
+   var x6 = parseInt(maxx - x4 - x5);
+   var y6 = y4;
+
+   line1 = "<font face=\"Verdana\" size=+1>"+line1+"</font>";
+
+   r = r + "<tr><td colspan=5 width=" + x1 + "><img src=\""+images+"head/hpart1"+headext+"\" width="+x1+" height="+y1+"></td></tr>";
+   r = r + "<tr><td width=" + x2 + "><img src=\""+images+"head/hpart2"+headext+"\"width=" + x2 +" height="+y2+"></td>";
+   r = r + "<td colspan=3 nowrap>" +line1+ "</td>";
+   r = r + "<td width=" + x3 + "><img src=\""+images+"head/hpart3"+headext+"\"width=" + x3 +" height="+y3+ "></td></tr>";
+   r = r + "<tr><td colspan=2 rowspan=2 width=" + x4 + "><img src=\""+images+"head/hpart4"+headext+"\"width=" + x4 +" height="+y4+ "></td>";
+
+   r = r + "<td nowrap>";
+   var mylk1 = 0;
+   var mylk2 = 0;
+   if (line2.lastIndexOf("[ICONS]") > 0) 
+   {
+     line2 = line2.substring(0, line2.lastIndexOf("[ICONS]"));
+     r = r + "<table width=100% border=0 cellspacing=0 cellpadding=0><tr><td valign=top>";
+     if (pupils[nr].lk1 > 100)
+     {
+       mylk1 = pupils[nr].lk1 - 100;
+       r = r + "<img src=\""+teachers[mylk1].homedir+"index.jpg\" border=0 alt=\""+teachers[mylk1].kurs+"\" height="+parseInt(y4-y5)+" hspace=5>";
+     }
+     else 
+     {
+       mylk1 = pupils[nr].lk1;
+       r = r + "<a href=\"javascript:parent.ShowMyTeacher("+mylk1+");\"><img src=\""+teachers[mylk1].homedir+"index.jpg\" border=0 alt=\""+teachers[mylk1].kurs+"\" height="+parseInt(y4-y5)+"hspace=5></a>";
+     }  
+     r = r + "</td><td valign=middle><font face=\"Verdana\" size=+1>"+line2+"</font></td><td valign=top>";
+     if (pupils[nr].lk2 > 100)
+     {
+       mylk2 = pupils[nr].lk2 - 100;
+       r = r + "<img src=\""+teachers[mylk2].homedir+"index.jpg\" border=0 alt=\""+teachers[mylk2].kurs+"\" height="+parseInt(y4-y5)+" hspace=5>";
+     }
+     else 
+     {
+       mylk2 = pupils[nr].lk2;
+       r = r + "<a href=\"javascript:parent.ShowMyTeacher("+mylk2+");\"><img src=\""+teachers[mylk2].homedir+"index.jpg\" border=0 alt=\""+teachers[mylk2].kurs+"\" height="+parseInt(y4-y5)+"hspace=5></a>";
+     }
+     r = r + "</td></tr></table>";
+   }
+   else
+     r = r + "<font face=\"Verdana\" size=+1>"+line2+"</font>";
+   
+   r = r + "</td>";
+   r = r + "<td colspan=2 rowspan=2 width=" + x6 + "><img src=\""+images+"head/"
+   if (animation == 1) { r = r + "hpart6"; } else {r = r + "hpart6_"};
+   r = r + headext+"\"width=" + x6 + " height="+y6+"></td></tr>";
+   r = r + "<tr><td valign=bottom width=" + x5 + "><img src=\""+images+"head/hpart5"+headext+"\"width=" + x5 + "></td></tr>";
+   var fill="img src=\""+images+"dummy.gif\" height=1 width=";
+   r = r + "<tr><td><" + fill + x2 + "></td><td><" + fill + (x4-x2) + "></td><td><" + fill + x5 + "></td><td><" + fill + (x6-x3) + "></td><td><" + fill + (x3) + "></td></tr>";
+   r = r + "</table>";
+   return(r);
+  }
+
+function ShowHeader(type, nr, anz_seiten, lks, farbe, rest)
+  {
+   var result = "";
+   if (rest == null) rest="";
+   if ((type == "t") && (teacher_bg) && (farbe == null))
+   {
+     if (rest.indexOf("ground=") == -1)
+     {
+       var ran = Number(random(31)+1).toFixed(0);
+       RanBGS[ran].counter++;
+       rest = " background="+RanBGS[ran].bgfile;
+     }
+   }
+   if (farbe == null) 
+   {
+    farbe = "\"#FFFFFF\"";
+   }
+   result = result + "<body bgcolor="+farbe+" "+rest+">";
+   if (lks == null) lks = "N/A";
+
+   if (type.toLowerCase() == "s") 
+   {
+     result = result + showheader(pupils[nr].name, lks+"[ICONS]",nr)
+     parent.path = pupils[nr].homedir;
+   }
+   else if (type.toLowerCase() == "t") 
+   {
+    result = result + showheader(teachers[nr].name, lks)
+    parent.path = teachers[nr].homedir;
+   }
+   else 
+   {
+    result = result + showheader(nr, lks)
+    parent.path = "/abicd/berichte/";
+   }
+   parent.anz_seiten = anz_seiten;
+   
+   result = result + ShowWerbung(random(300));
+  
+   result = result + "<font face=\"Verdana\">";
+
+   footer = ShowFooter(type, nr);
+   
+   return(result);
+  }
+
+  function ShowFooter(type, nr)
+  {
+    var result = "</font><p><center><hr>";
+    result = result + "<a href=\"javascript:alert('Funktion noch nicht implementiert!')\">Artikel zur&uuml;ck</a>";
+    result = result + " - <a href=\"/abicd/layout.htm\">Original-Layout</a> - ";
+    result = result + "<a href=\"javascript:alert('Funktion noch nicht implementiert!')\">Artikel vor</a>";
+    result = result + "<hr></center>\n</body>";
+    return(result);
+  }
+
+/* ################################### Other Routines ########################################### */
+
+var last_counter = 0;
+
+function random(max)
+{
+/*  random_counter = random_counter + last_counter + 1;
+  datum = new Date();
+  myrandom = (datum.getTime() / 10 * random_counter) % maxx;
+  last_counter = maxx;
+  return(myrandom % max);*/
+  return Math.random() * max;
+}
+
+function change_frames(url1, fr1, url2, fr2, url3, fr3)
+{
+  if (url1 != "")
+  parent.frames[fr1].location.href = url1;
+  if (url2 != "")
+  parent.frames[fr2].location.href = url2;
+  if (url3 != "")
+  parent.frames[fr3].location.href = url3;
+};
+
+function zweifenster(url1, fr1, url2, fr2)
+{
+  change_frames(url1, fr1, url2, fr2,"","");
+};
+
+function CalAndOutPut(where, str1, str2, cal)
+{
+  where.document.write(str1+cal+str2);
+}
+  
+function Recalc(pixel)
+{
+  if (iconsdir == "icons640")
+  return(parseInt((420/800) * pixel));
+  if (iconsdir == "icons800")
+  return(parseInt((600/800) * pixel));
+  if (iconsdir == "icons024")
+  return(pixel);
+}
+
+function imgsrc(name, size, rest)
+  {
+   if (size == null) size=1;   
+   var result = "<img src=\""+name+"\" width=\""+maxx*size+"\" "+rest+">";
+   return(result);
+  }
+
+/* ################################### Other Routines ########################################### */
+
+</script>
+
+</HEAD>
+
+<frameset rows="50,*" frameborder=0 framespacing=0 border=0>
+  <frameset cols="15%,*" frameborder=0 framespacing=0 border=0>
+    <frame src="/abicd/logo.htm" name="scriptwindow" marginheight=0 marginwidth=0 scrolling=no>
+    <frame src="/abicd/topstart.htm" name="logo" marginheight=0 marginwidth=0 scrolling=no>
+  </frameset>
+  <frameset cols="15%,*" frameborder=0 framespacing=0 border=0>
+    <frame src="/abicd/lstart.htm" name="leftbar" marginheight=0 marginwidth=0 scrolling=no>
+    <frameset cols="100%,*" frameborder=0 framespacing=0 border=0>
+      <frame src="/abicd/prequery.htm" name="mainwind" marginheight=0 marginwidth=12>
+      <frame src="/abicd/sound.htm" name="sound" marginheight=0 marginwidth=0 scrolling=no>
+    </frameset>
+  </frameset>
+</frameset>
+
+</HTML>
